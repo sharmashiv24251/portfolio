@@ -16,9 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sourceCodePro.className} antialiased`}>
+      <body className={`${sourceCodePro.className} antialiased `}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <main className={`min-h-screen`}>{children}</main>
+          <main className={`min-h-screen text-white`}>{children}</main>
           <Dock />
         </ThemeProvider>
       </body>
