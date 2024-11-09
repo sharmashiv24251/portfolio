@@ -13,6 +13,9 @@ export default function Home() {
         <ResumeLink />
         <TechStack />
       </div>
+      <span className="absolute bottom-24 hidden md:block text-white/50">
+        navigate using 👇
+      </span>
     </AuroraBackground>
   );
 }
