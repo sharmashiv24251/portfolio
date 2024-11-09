@@ -12,7 +12,7 @@ export default function Home() {
     <AuroraBackground className="overflow-scroll font-worksans">
       <div className="w-full h-full container mt-10 font-worksans">
         <TextGenerateEffect words={HEADING} />
-        <p className="text-white text-lg lg:text:xl xl:text-2xl font-bold mt-4 font-worksans">
+        <p className="text-white text-lg lg:text:xl xl:text-2xl font-bold mt-4">
           {DESC}
         </p>
       </div>
