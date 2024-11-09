@@ -188,7 +188,7 @@ export const cardsData: {
     src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/portfolio.png?t=2024-11-09T19%3A30%3A32.048Z",
     content: () => {
       return (
-        <section className="rounded-lg max-w-lg mx-auto">
+        <section className="rounded-lg max-w-lg">
           <p className="mb-6">Old portfolio made with html , css , js</p>
 
           <div>
