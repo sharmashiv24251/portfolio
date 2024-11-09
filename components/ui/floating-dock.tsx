@@ -10,6 +10,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 
@@ -41,7 +42,7 @@ const FloatingDockMobile = ({
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
 }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   return (
     <div className={cn("relative block md:hidden", className)}>
       <AnimatePresence>
@@ -91,7 +92,11 @@ const FloatingDockMobile = ({
       >
         <div className="flex justify-between p-5">
           <span>{open ? "Close" : "Explore"}</span>
-          <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+          {open ? (
+            <ChevronDown className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+          ) : (
+            <ChevronUp className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
+          )}
         </div>
       </button>
     </div>

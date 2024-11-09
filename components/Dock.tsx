@@ -7,9 +7,10 @@ import {
   IconBrandYoutube,
   IconTerminal2,
 } from "@tabler/icons-react";
+import { DockLink } from "@/lib/types";
 
 export function Dock() {
-  const links = [
+  const links: DockLink[] = [
     {
       title: "Home",
       icon: (
