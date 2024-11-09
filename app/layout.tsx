@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { sourceCodePro, workSans } from "./fonts";
+import { sourceCodePro } from "./fonts";
 import "./globals.css";
 import { Dock } from "@/components/Dock";
 import { ThemeProvider } from "@/components/theme-provider";
