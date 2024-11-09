@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
+
 import {
   AnimatePresence,
   MotionValue,
@@ -90,7 +90,7 @@ const FloatingDockMobile = ({
         onClick={() => setOpen(!open)}
         className="h-16 w-32 rounded-full bg-gray-50 dark:bg-neutral-800"
       >
-        <div className="flex justify-between p-5">
+        <div className="flex justify-between p-5 items-center">
           <span>{open ? "Close" : "Explore"}</span>
           {open ? (
             <ChevronDown className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />

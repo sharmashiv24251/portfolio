@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { sourceCodePro, workSans } from "./fonts";
 import "./globals.css";
 import { Dock } from "@/components/Dock";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -16,9 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>
+      <body className={`${sourceCodePro.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <main className="min-h-screen">{children}</main>
+          <main className={`min-h-screen`}>{children}</main>
           <Dock />
         </ThemeProvider>
       </body>
