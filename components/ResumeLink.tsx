@@ -7,7 +7,7 @@ const ResumeLink = () => {
     <div className="flex gap-2">
       <ButtonLink
         animation
-        link="https://drive.google.com/file/d/1ZpXeZo54avDdvuP2RYsZYQ1OJc3xQxMH/view?usp=drive_link"
+        link="https://drive.google.com/file/d/1ALRbLnXBkrxw4YMtZ7cnPSDtqDUgLJKG/view?usp=drive_link"
       >
         <Download className="mr-2" />
         Download Resume
