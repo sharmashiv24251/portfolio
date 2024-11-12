@@ -53,6 +53,10 @@ const FloatingDockMobile = ({
           >
             {items.map((item, idx) => (
               <motion.div
+                onClick={async () => {
+                  await new Promise((resolve) => setTimeout(resolve, 150));
+                  setOpen(false);
+                }}
                 key={item.title}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{
