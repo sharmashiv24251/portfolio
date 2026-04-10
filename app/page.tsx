@@ -8,7 +8,7 @@ import React from "react";
 export default function Home() {
   return (
     <AuroraBackground className="overflow-scroll">
-      <div className="w-full h-full container mt-10">
+      <div className="container w-full h-full pt-5 pb-28 md:pt-6 md:pb-32">
         <Intro />
         <ResumeLink />
         <TechStack />

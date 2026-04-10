@@ -2,10 +2,59 @@ export const cardsData: {
   description: string;
   title: string;
   src: string;
+  videoSrc?: string;
   visitUrl?: string;
+  visitLabel?: string;
   githubUrl?: string;
+  secondaryUrl?: string;
+  secondaryLabel?: string;
   content: any;
 }[] = [
+  {
+    description: "Food, skin, and health AI scanner",
+    title: "Gud For Us",
+    src: "https://ihichdejyaeignzbnfgb.supabase.co/storage/v1/object/public/website-assets/hero-vid.mp4",
+    videoSrc:
+      "https://ihichdejyaeignzbnfgb.supabase.co/storage/v1/object/public/website-assets/hero-vid.mp4",
+    visitUrl: "https://gudforus.com/",
+    visitLabel: "Website",
+    secondaryUrl:
+      "https://play.google.com/store/apps/details?id=com.app.gudforus&hl=en_IN",
+    secondaryLabel: "Google Play",
+    content: () => {
+      return (
+        <section className="rounded-lg max-w-lg mx-auto">
+          <p className="mb-6">
+            AI-powered product scanning for food, skincare, and packaged goods
+            that turns ingredient labels into simple, personalized health
+            guidance.
+          </p>
+
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold">Tech Stack</h3>
+            <ul className="list-disc list-inside">
+              <li><strong>Supabase</strong></li>
+              <li><strong>React Native</strong></li>
+              <li><strong>TypeScript</strong></li>
+              <li><strong>NativeWind</strong></li>
+              <li><strong>Tailwind CSS</strong></li>
+              <li><strong>Zod</strong></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold">Key Features</h3>
+            <ul className="list-disc list-inside">
+              <li>Scans food and skincare products with AI-powered analysis</li>
+              <li>Personalized health and compatibility scores</li>
+              <li>Ingredient, allergy, and sensitivity insights in plain English</li>
+              <li>Healthier swap suggestions and trend tracking over time</li>
+            </ul>
+          </div>
+        </section>
+      );
+    },
+  },
   {
     description: "Canvas-based layout builder like Canva",
     title: "ImageLayoutBuilder",
@@ -128,111 +177,111 @@ export const cardsData: {
       );
     },
   },
-  {
-    description: "free certificates",
-    title: "Certificate app",
-    src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/certificate.png",
-    visitUrl: "https://build-it-sigma.vercel.app/",
-    githubUrl: "https://github.com/sharmashiv24251/build-it",
-    content: () => {
-      return (
-        <section className="rounded-lg max-w-lg mx-auto">
-          <p className="mb-6">
-            Gives Free Internship certificates along with a scannable QR code
-            which verifies the authenticity of the user.
-          </p>
-
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold">Tech Stack</h3>
-            <ul className="list-disc list-inside">
-              <li><strong>Supabase</strong></li>
-              <li><strong>Prisma</strong></li>
-              <li><strong>Next.js</strong></li>
-              <li><strong>TypeScript</strong></li>
-              <li><strong>ShadCN UI</strong></li>
-            </ul>
-          </div>
-        </section>
-      );
-    },
-  },
-  {
-    description: "Filterable Charts from Api",
-    title: "Chart App",
-    src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/chart.png?t=2024-11-09T19%3A27%3A47.459Z",
-    visitUrl: "https://rock8-chart.vercel.app/",
-    githubUrl: "https://github.com/sharmashiv24251/rock8_chart",
-    content: () => {
-      return (
-        <section className="rounded-lg max-w-lg mx-auto">
-          <p className="mb-6">Show Chart From API</p>
-
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold">Tech Stack</h3>
-            <ul className="list-disc list-inside">
-              <li><strong>Next.js</strong></li>
-              <li><strong>Zustand</strong></li>
-              <li><strong>TypeScript</strong></li>
-              <li><strong>ShadCN UI</strong></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold">Key Features</h3>
-            <ul className="list-disc list-inside">
-              <li>User can filter charts by date, gender</li>
-              <li>Filters are saved in URL and persisted in local storage</li>
-            </ul>
-          </div>
-        </section>
-      );
-    },
-  },
-  {
-    description: "fetch emails from api",
-    title: "Outlook clone",
-    src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/outlook.png",
-    githubUrl: "https://github.com/sharmashiv24251/Outlook_rock8",
-    visitUrl: "https://outlook-rock8.vercel.app/",
-    content: () => {
-      return (
-        <section className="rounded-lg max-w-lg mx-auto">
-          <p className="mb-6">
-            Fetches email from API, opens master-slave layout on click, and fetches body from another endpoint.
-          </p>
-
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold">Tech Stack</h3>
-            <ul className="list-disc list-inside">
-              <li><strong>Next.js</strong></li>
-              <li><strong>React Query</strong></li>
-              <li><strong>Zustand</strong></li>
-              <li><strong>TypeScript</strong></li>
-              <li><strong>ShadCN UI</strong></li>
-            </ul>
-          </div>
-        </section>
-      );
-    },
-  },
-  {
-    description: "Html css and js only",
-    title: "Old Portfolio",
-    visitUrl: "https://silver-tanuki-98f89f.netlify.app/",
-    githubUrl: "https://github.com/sharmashiv24251",
-    src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/portfolio.png?t=2024-11-09T19%3A30%3A32.048Z",
-    content: () => {
-      return (
-        <section className="rounded-lg max-w-lg">
-          <p className="mb-6">Old portfolio made with HTML, CSS, and JS</p>
-          <div>
-            <h3 className="text-lg font-semibold">Key Features</h3>
-            <ul className="list-disc list-inside">
-              <li><strong>Fully working iPhone clone</strong></li>
-            </ul>
-          </div>
-        </section>
-      );
-    },
-  },
+  // {
+  //   description: "free certificates",
+  //   title: "Certificate app",
+  //   src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/certificate.png",
+  //   visitUrl: "https://build-it-sigma.vercel.app/",
+  //   githubUrl: "https://github.com/sharmashiv24251/build-it",
+  //   content: () => {
+  //     return (
+  //       <section className="rounded-lg max-w-lg mx-auto">
+  //         <p className="mb-6">
+  //           Gives Free Internship certificates along with a scannable QR code
+  //           which verifies the authenticity of the user.
+  //         </p>
+  //
+  //         <div className="mb-4">
+  //           <h3 className="text-lg font-semibold">Tech Stack</h3>
+  //           <ul className="list-disc list-inside">
+  //             <li><strong>Supabase</strong></li>
+  //             <li><strong>Prisma</strong></li>
+  //             <li><strong>Next.js</strong></li>
+  //             <li><strong>TypeScript</strong></li>
+  //             <li><strong>ShadCN UI</strong></li>
+  //           </ul>
+  //         </div>
+  //       </section>
+  //     );
+  //   },
+  // },
+  // {
+  //   description: "Filterable Charts from Api",
+  //   title: "Chart App",
+  //   src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/chart.png?t=2024-11-09T19%3A27%3A47.459Z",
+  //   visitUrl: "https://rock8-chart.vercel.app/",
+  //   githubUrl: "https://github.com/sharmashiv24251/rock8_chart",
+  //   content: () => {
+  //     return (
+  //       <section className="rounded-lg max-w-lg mx-auto">
+  //         <p className="mb-6">Show Chart From API</p>
+  //
+  //         <div className="mb-4">
+  //           <h3 className="text-lg font-semibold">Tech Stack</h3>
+  //           <ul className="list-disc list-inside">
+  //             <li><strong>Next.js</strong></li>
+  //             <li><strong>Zustand</strong></li>
+  //             <li><strong>TypeScript</strong></li>
+  //             <li><strong>ShadCN UI</strong></li>
+  //           </ul>
+  //         </div>
+  //
+  //         <div>
+  //           <h3 className="text-lg font-semibold">Key Features</h3>
+  //           <ul className="list-disc list-inside">
+  //             <li>User can filter charts by date, gender</li>
+  //             <li>Filters are saved in URL and persisted in local storage</li>
+  //           </ul>
+  //         </div>
+  //       </section>
+  //     );
+  //   },
+  // },
+  // {
+  //   description: "fetch emails from api",
+  //   title: "Outlook clone",
+  //   src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/outlook.png",
+  //   githubUrl: "https://github.com/sharmashiv24251/Outlook_rock8",
+  //   visitUrl: "https://outlook-rock8.vercel.app/",
+  //   content: () => {
+  //     return (
+  //       <section className="rounded-lg max-w-lg mx-auto">
+  //         <p className="mb-6">
+  //           Fetches email from API, opens master-slave layout on click, and fetches body from another endpoint.
+  //         </p>
+  //
+  //         <div className="mb-4">
+  //           <h3 className="text-lg font-semibold">Tech Stack</h3>
+  //           <ul className="list-disc list-inside">
+  //             <li><strong>Next.js</strong></li>
+  //             <li><strong>React Query</strong></li>
+  //             <li><strong>Zustand</strong></li>
+  //             <li><strong>TypeScript</strong></li>
+  //             <li><strong>ShadCN UI</strong></li>
+  //           </ul>
+  //         </div>
+  //       </section>
+  //     );
+  //   },
+  // },
+  // {
+  //   description: "Html css and js only",
+  //   title: "Old Portfolio",
+  //   visitUrl: "https://silver-tanuki-98f89f.netlify.app/",
+  //   githubUrl: "https://github.com/sharmashiv24251",
+  //   src: "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/portfolio.png?t=2024-11-09T19%3A30%3A32.048Z",
+  //   content: () => {
+  //     return (
+  //       <section className="rounded-lg max-w-lg">
+  //         <p className="mb-6">Old portfolio made with HTML, CSS, and JS</p>
+  //         <div>
+  //           <h3 className="text-lg font-semibold">Key Features</h3>
+  //           <ul className="list-disc list-inside">
+  //             <li><strong>Fully working iPhone clone</strong></li>
+  //           </ul>
+  //         </div>
+  //       </section>
+  //     );
+  //   },
+  // },
 ];

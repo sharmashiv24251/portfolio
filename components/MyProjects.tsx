@@ -6,6 +6,38 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 import { SiGithub } from "react-icons/si";
 import { cardsData as cards } from "@/lib/project-data";
 
+function ProjectMedia({
+  card,
+  className,
+}: {
+  card: (typeof cards)[number];
+  className: string;
+}) {
+  if (card.videoSrc) {
+    return (
+      <video
+        src={card.videoSrc}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className={className}
+      />
+    );
+  }
+
+  return (
+    <Image
+      width={300}
+      height={300}
+      src={card.src}
+      alt={card.title}
+      className={className}
+    />
+  );
+}
+
 export default function MyProjects() {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
@@ -40,13 +72,13 @@ export default function MyProjects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed bg-black/20 h-full w-full z-10"
+            className="fixed inset-0 z-10 bg-black/55 backdrop-blur-md"
           />
         )}
       </AnimatePresence>
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0 grid place-items-center z-[100]">
+          <div className="fixed inset-0 z-[100] grid place-items-center p-3 md:p-6">
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
@@ -56,7 +88,7 @@ export default function MyProjects() {
                 opacity: 0,
                 transition: { duration: 0.05 },
               }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+              className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/55 backdrop-blur md:hidden"
               onClick={() => setActive(null)}
             >
               <CloseIcon />
@@ -64,71 +96,96 @@ export default function MyProjects() {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="flex h-full w-full max-w-[560px] flex-col overflow-hidden rounded-[32px] border border-white/10 bg-[#111111]/95 shadow-[0_24px_80px_rgba(0,0,0,0.45)] md:h-auto md:max-h-[90vh]"
             >
-              <motion.div layoutId={`image-${active.title}-${id}`}>
-                <Image
-                  width={300}
-                  height={300}
-                  src={active.src}
-                  alt={active.title}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
+              <motion.div
+                layoutId={`image-${active.title}-${id}`}
+                className="relative overflow-hidden border-b border-white/10 bg-black"
+              >
+                <ProjectMedia
+                  card={active}
+                  className="h-72 w-full object-cover object-top md:h-[22rem]"
                 />
-              </motion.div>
-
-              <div>
-                <div className="flex justify-between items-start p-4 max-sm:flex-col max-sm:gap-6">
-                  <div>
-                    <motion.h3
-                      layoutId={`title-${active.title}-${id}`}
-                      className="font-medium text-neutral-700 dark:text-neutral-200 text-base"
-                    >
-                      {active.title}
-                    </motion.h3>
-                    <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="text-neutral-600 dark:text-neutral-400 text-base text-left"
-                    >
-                      {active.description}
-                    </motion.p>
-                  </div>
-
-                  <div className="flex gap-2">
-                    <motion.a
-                      layout
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      href={active.visitUrl}
-                      target="_blank"
-                      className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
-                    >
-                      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-                      <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                        Visit
-                      </span>{" "}
-                    </motion.a>
-                    <motion.a
-                      layout
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      href={active.githubUrl}
-                      target="_blank"
-                      className="px-4 py-2 text-sm rounded-full font-bold  bg-green-500 text-white hover:bg-green-600 transition-colors flex items-center gap-2"
-                    >
-                      <SiGithub className="h-4 w-4" />
-                      GitHub
-                    </motion.a>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                  <div className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur">
+                    Featured Project
                   </div>
                 </div>
-                <div className="pt-4 relative px-4">
+              </motion.div>
+
+              <div className="flex flex-1 flex-col overflow-hidden">
+                <div className="border-b border-white/10 px-5 py-5 md:px-6">
+                  <div className="flex items-start justify-between gap-4 max-sm:flex-col">
+                    <div className="space-y-2">
+                      <motion.h3
+                        layoutId={`title-${active.title}-${id}`}
+                        className="text-2xl font-semibold tracking-tight text-white"
+                      >
+                        {active.title}
+                      </motion.h3>
+                      <motion.p
+                        layoutId={`description-${active.description}-${id}`}
+                        className="max-w-xl text-sm leading-relaxed text-white/68 md:text-base"
+                      >
+                        {active.description}
+                      </motion.p>
+                    </div>
+
+                    <div className="flex w-full flex-wrap gap-3 sm:w-auto sm:justify-end">
+                      {active.visitUrl ? (
+                        <motion.a
+                          layout
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          href={active.visitUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/15 bg-white/6 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-white/12"
+                        >
+                          {active.visitLabel ?? "Visit"}
+                        </motion.a>
+                      ) : null}
+                      {active.githubUrl ? (
+                        <motion.a
+                          layout
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          href={active.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-400"
+                        >
+                          <SiGithub className="h-4 w-4" />
+                          GitHub
+                        </motion.a>
+                      ) : active.secondaryUrl ? (
+                        <motion.a
+                          layout
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          href={active.secondaryUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex min-h-11 items-center justify-center rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-400"
+                        >
+                          {active.secondaryLabel ?? "Open"}
+                        </motion.a>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="px-5 pb-6 pt-5 md:px-6">
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-neutral-600 text-xs md:text-sm lg:text-base md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400"
+                    className="max-h-[34vh] overflow-auto rounded-[28px] border border-white/10 bg-white/[0.03] px-4 pb-10 pt-4 text-sm text-white/72 md:max-h-[38vh] md:px-5 md:pb-12 md:pt-5 md:text-[15px] [&_h3]:mb-3 [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:uppercase [&_h3]:tracking-[0.2em] [&_h3]:text-white/45 [&_li]:text-white/82 [&_li]:marker:text-emerald-300 [&_p]:leading-7 [&_section]:space-y-5 [&_strong]:font-semibold [&_strong]:text-white"
                   >
                     {typeof active.content === "function"
                       ? active.content()
@@ -150,11 +207,8 @@ export default function MyProjects() {
           >
             <div className="flex gap-4 flex-col w-full">
               <motion.div layoutId={`image-${card.title}-${id}`}>
-                <Image
-                  width={300}
-                  height={300}
-                  src={card.src}
-                  alt={card.title}
+                <ProjectMedia
+                  card={card}
                   className="h-60 w-full rounded-lg object-cover object-top"
                 />
               </motion.div>
@@ -198,7 +252,7 @@ export const CloseIcon = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="h-4 w-4 text-black"
+      className="h-4 w-4 text-white"
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M18 6l-12 12" />

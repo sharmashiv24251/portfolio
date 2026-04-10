@@ -39,7 +39,7 @@ export function Dock() {
       icon: (
         <IconBrandGithub className="h-full w-full scale-150 text-neutral-500 dark:text-green-500" />
       ),
-      href: "https://github.com/sharmashiv24251?tab=repositories",
+      href: "https://github.com/sharmashiv24251",
     },
     {
       title: "Youtube",

@@ -12,7 +12,10 @@ import {
 } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+
+const isExternalLink = (href: string) => href.startsWith("http");
 
 export const FloatingDock = ({
   items,
@@ -43,6 +46,16 @@ const FloatingDockMobile = ({
   className?: string;
 }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    items.forEach((item) => {
+      if (!isExternalLink(item.href)) {
+        router.prefetch(item.href);
+      }
+    });
+  }, [items, router]);
+
   return (
     <div className={cn("relative block md:hidden", className)}>
       <AnimatePresence>
@@ -53,9 +66,11 @@ const FloatingDockMobile = ({
           >
             {items.map((item, idx) => (
               <motion.div
-                onClick={async () => {
-                  await new Promise((resolve) => setTimeout(resolve, 150));
+                onClick={() => {
                   setOpen(false);
+                  if (!isExternalLink(item.href)) {
+                    router.prefetch(item.href);
+                  }
                 }}
                 key={item.title}
                 initial={{ opacity: 0, y: 10 }}
@@ -75,7 +90,8 @@ const FloatingDockMobile = ({
                 <Link
                   href={item.href}
                   key={item.title}
-                  target={item.href.startsWith("http") ? "_blank" : "_self"}
+                  prefetch={!isExternalLink(item.href)}
+                  target={isExternalLink(item.href) ? "_blank" : "_self"}
                   className="flex items-center w-32 h-16 gap-2 px-4 py-2 rounded-full bg-gray-50 dark:bg-neutral-900"
                 >
                   <div className="flex items-center gap-2 w-full justify-between">
@@ -114,7 +130,17 @@ const FloatingDockDesktop = ({
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
 }) => {
+  const router = useRouter();
   let mouseX = useMotionValue(Infinity);
+
+  useEffect(() => {
+    items.forEach((item) => {
+      if (!isExternalLink(item.href)) {
+        router.prefetch(item.href);
+      }
+    });
+  }, [items, router]);
+
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
@@ -185,7 +211,11 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={href} target={href.startsWith("http") ? "_blank" : "_self"}>
+    <Link
+      href={href}
+      prefetch={!isExternalLink(href)}
+      target={isExternalLink(href) ? "_blank" : "_self"}
+    >
       <motion.div
         ref={ref}
         style={{ width, height }}
