@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #fdfcf8;
+  --foreground: #1b1c1a;
+}
+
+.dark {
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-noto-serif);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body,
+  body * {
+    cursor: none;
+  }
+
+  .editorial-cursor-ring,
+  .editorial-cursor-dot {
+    pointer-events: none;
+    position: fixed;
+    z-index: 9999;
+    transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0)
+      translate(-50%, -50%);
+    will-change: transform, opacity;
+  }
+
+  .editorial-cursor-ring {
+    border: 1px solid color-mix(in srgb, var(--foreground) 70%, transparent);
+    height: 2.25rem;
+    width: 2.25rem;
+    transition:
+      opacity 180ms ease,
+      scale 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .editorial-cursor-ring::before,
+  .editorial-cursor-ring::after {
+    background: color-mix(in srgb, var(--foreground) 55%, transparent);
+    content: "";
+    position: absolute;
+  }
+
+  .editorial-cursor-ring::before {
+    height: 1px;
+    left: 50%;
+    top: -0.35rem;
+    transform: translateX(-50%);
+    width: 0.5rem;
+  }
+
+  .editorial-cursor-ring::after {
+    height: 0.5rem;
+    left: -0.35rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+  }
+
+  .editorial-cursor-dot {
+    background: var(--foreground);
+    height: 0.28rem;
+    transition:
+      opacity 180ms ease,
+      scale 180ms ease,
+      background-color 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    width: 0.28rem;
+  }
+}
+
+body,
+body *,
+body *::before,
+body *::after {
+  transition-duration: 520ms;
+  transition-property: background-color, border-color, color, fill, stroke, text-decoration-color, opacity, box-shadow;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 620ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: theme-fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: theme-fade-in;
+}
+
+@keyframes theme-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.18;
+  }
+}
+
+@keyframes theme-fade-in {
+  from {
+    opacity: 0.18;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  body *,
+  body *::before,
+  body *::after {
+    transition-duration: 1ms;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1ms;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+}
