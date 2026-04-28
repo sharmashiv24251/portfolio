@@ -198,17 +198,137 @@ export const projects = [
     slug: "image-layout-builder",
     title: "ImageLayoutBuilder",
     description:
-      "A sophisticated grid layout engine that allows users to create print-ready layouts with sub-pixel precision. Built with React Canvas.",
+      "Canvas-based layout editor built with Konva.js and Redux, handling real-time interactions, layered state, and undo/redo systems.",
     image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Code editor interface with colorful syntax highlighting",
-    tags: ["React", "Canvas"],
+      "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/canvas-project.png",
+    imageAlt: "ImageLayoutBuilder canvas layout editor interface",
+    tags: ["Next.js", "Konva.js", "Redux Toolkit", "Tailwind CSS"],
     href: "/project/image-layout-builder",
+    liveHref: "https://canvas-app-konva.vercel.app",
+    repositoryHref: "https://github.com/sharmashiv24251/canvas-app-konva",
     details: [
-      "Built a precise layout editor for print-ready image compositions.",
-      "Designed canvas interactions for sizing, spacing, and export flows.",
-      "Focused on predictable rendering and a fast editorial workflow.",
+      "Built a canvas-based editor using Konva.js for real-time rendering and element manipulation.",
+      "Implemented centralized state management using Redux Toolkit to manage elements, selection, and history.",
+      "Designed interaction systems for drag, resize, rotate, and layer ordering.",
     ],
+    caseStudy: {
+      shortDescription:
+        "A browser-based canvas editor for creating structured visual layouts with real-time interactions, layer management, and persistent state.",
+      valueProposition:
+        "Demonstrates handling of complex frontend state, real-time UI interactions, and performance-sensitive rendering in the browser.",
+      role: "Frontend Engineer · Sole Developer",
+      sections: [
+        {
+          title: "Core Contribution",
+          items: [
+            "Built a canvas-based editor using Konva.js for real-time rendering and element manipulation.",
+            "Implemented centralized state management using Redux Toolkit to manage elements, selection, and history.",
+            "Designed interaction systems for drag, resize, rotate, and selection across canvas elements.",
+            "Developed layer management with ordering and z-index control.",
+          ],
+        },
+        {
+          title: "Engineering Decisions",
+          items: [
+            "Used Redux for predictable state synchronization across canvas, sidebar, and inspector panels.",
+            "Implemented undo/redo using full state history tracking — each action snapshots the canvas state.",
+            "Used JSON serialization for saving and restoring layouts, keeping persistence simple and portable.",
+            "Leveraged Konva.js for hardware-accelerated canvas rendering to keep interactions smooth.",
+          ],
+        },
+        {
+          title: "Challenges",
+          items: [
+            "Maintaining consistent state across multiple UI panels (canvas, inspector, sidebar) required strict unidirectional data flow.",
+            "Designing undo/redo without breaking UI synchronization — solved by snapshotting normalized Redux state slices.",
+            "Managing high-frequency drag/resize events while keeping the UI responsive required debounced state commits.",
+          ],
+        },
+        {
+          title: "Key Highlights",
+          items: [
+            "Non-trivial interactive system built entirely in the browser — not just static UI.",
+            "Demonstrates strong frontend architecture: centralized state, layered rendering, and interaction design.",
+            "Persistent layout state via JSON serialization, enabling save/restore workflows without a backend.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    slug: "token-portfolio",
+    title: "Token Portfolio",
+    description:
+      "Interactive crypto dashboard for tracking token holdings, live prices, portfolio value, and watchlist data in a clean responsive interface.",
+    image:
+      "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/token.png",
+    imageAlt: "Token Portfolio crypto dashboard interface",
+    tags: ["React + Vite", "Redux Toolkit", "TanStack Query", "Tailwind CSS", "Wagmi", "RainbowKit"],
+    href: "/project/token-portfolio",
+    liveHref: "https://crypto-dashboard-taupe-theta.vercel.app/",
+    repositoryHref: "https://github.com/sharmashiv24251/crypto-dashboard",
+    figmaHref: "https://www.figma.com/design/ICYVun3vhMh7nIHzMGUqdw/Token-Portfolio?node-id=0-1&p=f&t=PMbRHAZfRdMSztS3-0",
+    details: [
+      "Built the dashboard UI for portfolio value, holdings, and watchlist management.",
+      "Implemented token search, add-token flow, and editable holdings with live price data.",
+      "Persisted user watchlist and portfolio state in local storage for cross-session continuity.",
+    ],
+    caseStudy: {
+      shortDescription:
+        "Interactive crypto dashboard for tracking token holdings, live prices, portfolio value, and watchlist data.",
+      valueProposition:
+        "Helps users monitor a personalized portfolio with live data, visual summaries, and real-time updates.",
+      role: "Frontend Engineer · Sole Developer",
+      sections: [
+        {
+          title: "Core Contribution",
+          items: [
+            "Built the dashboard UI for portfolio value, holdings, and watchlist management.",
+            "Implemented token search, add-token flow, and editable holdings.",
+            "Created responsive views with a clean Figma-to-code implementation.",
+            "Designed the watchlist and portfolio summary interface for clarity and fast scanning.",
+          ],
+        },
+        {
+          title: "Engineering Decisions",
+          items: [
+            "Used Redux Toolkit for centralized state management across portfolio and watchlist.",
+            "Used TanStack Query for caching and reducing unnecessary API calls to CoinGecko.",
+            "Integrated CoinGecko API for live token data and price updates.",
+            "Persisted user watchlist and portfolio data in local storage for cross-session continuity.",
+            "Used Wagmi + RainbowKit for wallet connection flow.",
+          ],
+        },
+        {
+          title: "Product Thinking",
+          items: [
+            "Built a portfolio overview with a donut chart for quick visual understanding of asset allocation.",
+            "Added last-updated metadata to make refresh state visible and reduce user uncertainty.",
+            "Designed the watchlist for fast comparison of price, change percentage, and holdings.",
+            "Focused on keeping the UI readable and efficient for data-heavy usage.",
+          ],
+        },
+        {
+          title: "Technical Highlights",
+          items: [
+            "Reusable UI components for buttons, modals, and inputs.",
+            "Infinite scrolling search for tokens.",
+            "Responsive layout with clean mobile and desktop behavior.",
+            "Custom donut chart implementation for portfolio allocation.",
+            "Smooth state transitions and price refresh behavior.",
+          ],
+        },
+        {
+          title: "Challenges",
+          items: [
+            "Keeping portfolio and watchlist state in sync across interactions.",
+            "Handling live API data without unnecessary rerenders.",
+            "Maintaining a clean and readable layout while showing many token metrics.",
+            "Ensuring local persistence worked reliably after refresh.",
+          ],
+        },
+      ],
+    },
   },
   {
     slug: "blue-bnb",
@@ -224,23 +344,6 @@ export const projects = [
       "Created booking flows, listing pages, and map-driven discovery patterns.",
       "Integrated secure payment and reservation state across the stack.",
       "Optimized the interface for repeat browsing and quick comparison.",
-    ],
-  },
-  {
-    slug: "token-portfolio",
-    title: "Token Portfolio",
-    description:
-      "A high-performance crypto asset tracker integrating multiple exchange APIs. Features automated tax reporting and tax-loss harvesting suggestions.",
-    image:
-      "https://images.unsplash.com/photo-1642104704074-907c0698cbd9?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Abstract digital finance visualization",
-    tags: ["Redux Toolkit", "Chart.js", "Node.js"],
-    href: "/project/token-portfolio",
-    repositoryHref: "#",
-    details: [
-      "Aggregated exchange data into a consolidated portfolio interface.",
-      "Built performance-minded charting and reporting surfaces.",
-      "Explored automated tax reporting and loss-harvesting suggestions.",
     ],
   },
 ];

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/data/portfolio";
-import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
 
 type Project = (typeof projects)[number];
@@ -76,7 +75,7 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="relative mb-4 aspect-video overflow-hidden bg-stone-100 dark:bg-[#333333]">
         <Image
           alt={project.imageAlt}
-          className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+          className="object-cover"
           fill
           sizes="(min-width: 768px) 360px, 100vw"
           src={project.image}
@@ -86,13 +85,12 @@ function ProjectCard({ project }: { project: Project }) {
       <h3 className="mb-2 font-serif text-xl font-semibold text-stone-950 underline-offset-4 group-hover:underline dark:text-white 2xl:text-[1.65rem]">{project.title}</h3>
       <p className="mb-6 flex-1 text-sm leading-relaxed text-stone-600 dark:text-[#a0a0a0] 2xl:text-lg">{project.description}</p>
 
-      <div className="mt-auto flex items-center justify-between border-t border-stone-200 pt-4 dark:border-[#333333] 2xl:pt-5">
+      <div className="mt-auto border-t border-stone-200 pt-4 dark:border-[#333333] 2xl:pt-5">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
-        <Icon className="size-5 text-stone-950 dark:text-white 2xl:size-5" name="external" />
       </div>
     </Link>
   );

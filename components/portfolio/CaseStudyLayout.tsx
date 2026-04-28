@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
 
@@ -13,11 +14,24 @@ export type CaseStudyProps = {
   shortDescription: string;
   valueProposition: string;
   tags: string[];
+  image?: string;
+  imageAlt?: string;
   video?: string;
   liveHref?: string;
   playStoreHref?: string;
+  githubHref?: string;
+  figmaHref?: string;
+  role?: string;
   sections: CaseStudySection[];
 };
+
+function extractHostname(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
 
 function TechPill({ label }: { label: string }) {
   return (
@@ -51,17 +65,26 @@ export function CaseStudyLayout({
   shortDescription,
   valueProposition,
   tags,
+  image,
+  imageAlt,
   video,
   liveHref,
   playStoreHref,
+  githubHref,
+  figmaHref,
+  role,
   sections,
 }: CaseStudyProps) {
+  const isShippedProduct = !!playStoreHref;
+
   return (
     <article>
       {/* ── Hero ── */}
-      <div className="mb-14 grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,420px)_1fr] md:gap-12 lg:gap-16 2xl:mb-20 2xl:gap-20">
-        {/* Left — video: capped at 420px, centred on mobile */}
-        <div className="mx-auto aspect-square w-full max-w-[420px] overflow-hidden border border-stone-950 bg-stone-100 md:mx-0 dark:border-[#333333] dark:bg-[#242424]">
+      <div className={`mb-14 grid grid-cols-1 items-start 2xl:mb-20 ${video ? "gap-10 md:grid-cols-[minmax(0,420px)_1fr] md:gap-12 lg:gap-16 2xl:gap-20" : "gap-8 xl:grid-cols-[minmax(0,420px)_1fr] xl:gap-12 2xl:gap-20"}`}>
+        {/* Left — media: video or image */}
+        <div
+          className={`group w-full overflow-hidden border border-stone-950 bg-stone-100 dark:border-[#333333] dark:bg-[#242424] ${video ? "aspect-square mx-auto max-w-[420px] md:mx-0" : "relative aspect-video"}`}
+        >
           {video ? (
             <video
               autoPlay
@@ -71,6 +94,15 @@ export function CaseStudyLayout({
               playsInline
               src={video}
             />
+          ) : image ? (
+            <Image
+              alt={imageAlt || title}
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              fill
+              priority
+              sizes="(min-width: 1280px) 420px, 100vw"
+              src={image}
+            />
           ) : (
             <div className="flex h-full items-center justify-center text-sm text-stone-400 dark:text-[#555555]">
               No preview available
@@ -78,10 +110,10 @@ export function CaseStudyLayout({
           )}
         </div>
 
-        {/* Right — meta stack: aligns top, width capped */}
+        {/* Right — meta stack */}
         <div className="flex max-w-2xl flex-col gap-5 2xl:gap-6">
           <p className="font-serif text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-500 dark:text-[#666666]">
-            Case Study · Shipped Product
+            {isShippedProduct ? "Case Study · Shipped Product" : "Case Study · Personal Project"}
           </p>
 
           <h1 className="font-serif text-4xl font-bold leading-tight text-stone-950 dark:text-white 2xl:text-5xl">
@@ -105,11 +137,19 @@ export function CaseStudyLayout({
               ))}
             </div>
           </div>
+
+          {/* Role */}
+          {role && (
+            <div>
+              <MetaLabel>Role</MetaLabel>
+              <p className="text-sm text-stone-700 dark:text-[#cccccc]">{role}</p>
+            </div>
+          )}
         </div>
       </div>
 
       {/* ── Links ── */}
-      {(liveHref || playStoreHref) && (
+      {(liveHref || playStoreHref || githubHref || figmaHref) && (
         <div className="mb-14 2xl:mb-20">
           <SectionHeading>Links</SectionHeading>
           <div className="flex flex-wrap gap-3">
@@ -126,7 +166,7 @@ export function CaseStudyLayout({
                     Google Play Store
                   </p>
                   <p className="text-[10px] text-stone-400 dark:text-[#555555]">
-                    play.google.com
+                    {extractHostname(playStoreHref)}
                   </p>
                 </div>
                 <Icon className="ml-2 size-3 shrink-0 text-stone-300 group-hover:text-stone-500 dark:text-[#444444] dark:group-hover:text-[#a0a0a0]" name="external" />
@@ -142,10 +182,48 @@ export function CaseStudyLayout({
                 <Icon className="size-4 shrink-0 text-stone-500 dark:text-[#a0a0a0]" name="globe" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.1em] text-stone-950 dark:text-white">
-                    Live Website
+                    Live Demo
                   </p>
                   <p className="text-[10px] text-stone-400 dark:text-[#555555]">
-                    gudforus.com
+                    {extractHostname(liveHref)}
+                  </p>
+                </div>
+                <Icon className="ml-2 size-3 shrink-0 text-stone-300 group-hover:text-stone-500 dark:text-[#444444] dark:group-hover:text-[#a0a0a0]" name="external" />
+              </a>
+            )}
+            {githubHref && (
+              <a
+                className="group flex items-center gap-3 border border-stone-950 bg-white px-5 py-4 hover:bg-stone-50 dark:border-[#333333] dark:bg-[#242424] dark:hover:bg-[#2a2a2a]"
+                href={githubHref}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <Icon className="size-4 shrink-0 text-stone-500 dark:text-[#a0a0a0]" name="github" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-stone-950 dark:text-white">
+                    Source Code
+                  </p>
+                  <p className="text-[10px] text-stone-400 dark:text-[#555555]">
+                    {extractHostname(githubHref)}
+                  </p>
+                </div>
+                <Icon className="ml-2 size-3 shrink-0 text-stone-300 group-hover:text-stone-500 dark:text-[#444444] dark:group-hover:text-[#a0a0a0]" name="external" />
+              </a>
+            )}
+            {figmaHref && (
+              <a
+                className="group flex items-center gap-3 border border-stone-950 bg-white px-5 py-4 hover:bg-stone-50 dark:border-[#333333] dark:bg-[#242424] dark:hover:bg-[#2a2a2a]"
+                href={figmaHref}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <Icon className="size-4 shrink-0 text-stone-500 dark:text-[#a0a0a0]" name="figma" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.1em] text-stone-950 dark:text-white">
+                    Figma Design
+                  </p>
+                  <p className="text-[10px] text-stone-400 dark:text-[#555555]">
+                    figma.com
                   </p>
                 </div>
                 <Icon className="ml-2 size-3 shrink-0 text-stone-300 group-hover:text-stone-500 dark:text-[#444444] dark:group-hover:text-[#a0a0a0]" name="external" />

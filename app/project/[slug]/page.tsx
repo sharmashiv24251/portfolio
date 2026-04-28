@@ -35,14 +35,21 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const video = "video" in project ? (project.video as string | undefined) : undefined;
   const liveHref = "liveHref" in project ? (project.liveHref as string | undefined) : undefined;
   const playStoreHref = "playStoreHref" in project ? (project.playStoreHref as string | undefined) : undefined;
+  const githubHref = "repositoryHref" in project ? (project.repositoryHref as string | undefined) : undefined;
+  const figmaHref = "figmaHref" in project ? (project.figmaHref as string | undefined) : undefined;
   const caseStudy = "caseStudy" in project ? (project.caseStudy as CaseStudyData) : undefined;
 
   if (caseStudy) {
     return (
       <PortfolioShell>
         <CaseStudyLayout
+          figmaHref={figmaHref}
+          githubHref={githubHref}
+          image={project.image}
+          imageAlt={project.imageAlt}
           liveHref={liveHref}
           playStoreHref={playStoreHref}
+          role={"role" in caseStudy ? (caseStudy.role as string) : undefined}
           sections={caseStudy.sections}
           shortDescription={caseStudy.shortDescription}
           tags={project.tags}
