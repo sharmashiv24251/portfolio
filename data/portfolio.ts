@@ -13,10 +13,16 @@ export const sideNavItems = [
 ] as const;
 
 export const contactLinks = [
-  { label: "shivansh.s@edu.in", href: "mailto:shivansh@example.com", icon: "mail" },
-  { label: "LinkedIn", href: "#", icon: "linkedin" },
-  { label: "+91 98765 43210", href: "tel:+919876543210", icon: "phone" },
-  { label: "Portfolio", href: "#", icon: "code" },
+  { label: "codersharma24251@gmail.com", href: "mailto:codersharma24251@gmail.com", icon: "mail" },
+  { label: "+91 74772 13559", href: "tel:+917477213559", icon: "phone" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/sharmashiv24251/", icon: "linkedin" },
+  { label: "GitHub", href: "https://github.com/sharmashiv24251", icon: "github" },
+] as const;
+
+export const footerLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/sharmashiv24251/", icon: "linkedin" },
+  { label: "GitHub", href: "https://github.com/sharmashiv24251", icon: "github" },
+  { label: "Instagram", href: "https://www.instagram.com/sharmashiv24251/", icon: "instagram" },
 ] as const;
 
 export const profileHover = {
@@ -66,17 +72,20 @@ export const companyProfiles = {
   Envo: {
     description:
       "Product engineering work focused on scalable interfaces, design systems, and dashboard performance.",
-    links: [{ label: "Website", href: "#" }],
+    links: [
+      { label: "ENVO", href: "https://workenvo.com/" },
+      { label: "GudForUs", href: "https://gudforus.com/" },
+    ],
   },
   "Studio 137": {
     description:
       "Boutique full-stack development across CMS tooling, data-heavy product surfaces, and agency workflows.",
-    links: [{ label: "Website", href: "#" }],
+    links: [{ label: "Studio 137", href: "https://www.studio137.co.za/" }],
   },
   "Tukidoo.ai": {
     description:
       "AI education platform work with TypeScript UI components and end-to-end quality automation.",
-    links: [{ label: "Website", href: "#" }],
+    links: [{ label: "Tukidoo", href: "https://stage.tukidoo.ai/" }],
   },
 } as const;
 

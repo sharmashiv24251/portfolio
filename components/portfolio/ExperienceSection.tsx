@@ -78,6 +78,8 @@ function CompanyHover({ name }: { name: string }) {
                 className="border border-stone-950 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-stone-950 transition-colors hover:bg-stone-100 dark:border-[#333333] dark:text-white dark:hover:bg-[#333333]"
                 href={link.href}
                 key={link.label}
+                rel="noreferrer"
+                target="_blank"
               >
                 {link.label}
               </a>

@@ -36,6 +36,8 @@ export function Hero() {
             key={link.label}
             className="flex items-center gap-1.5 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-blue-700 dark:decoration-[#333333] dark:hover:text-white 2xl:gap-2"
             href={link.href}
+            rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+            target={link.href.startsWith("http") ? "_blank" : undefined}
           >
             <Icon className="size-4 shrink-0 2xl:size-5" name={link.icon} />
             {link.label}

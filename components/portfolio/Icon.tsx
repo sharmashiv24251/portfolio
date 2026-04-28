@@ -21,6 +21,7 @@ const icons = {
   curriculum: FileText,
   external: ExternalLink,
   github: Code2,
+  instagram: Link,
   linkedin: Link,
   link: Link,
   mail: Mail,
