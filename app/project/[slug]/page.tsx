@@ -3,11 +3,19 @@ import { notFound } from "next/navigation";
 import { projects } from "@/data/portfolio";
 import { PortfolioShell } from "@/components/portfolio/PortfolioShell";
 import { SectionHeading } from "@/components/portfolio/SectionHeading";
+import { CaseStudyLayout, type CaseStudySection } from "@/components/portfolio/CaseStudyLayout";
 
 type ProjectPageProps = {
   params: Promise<{
     slug: string;
   }>;
+};
+
+type CaseStudyData = {
+  shortDescription: string;
+  valueProposition: string;
+  role: string;
+  sections: CaseStudySection[];
 };
 
 export function generateStaticParams() {
@@ -24,6 +32,28 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const video = "video" in project ? (project.video as string | undefined) : undefined;
+  const liveHref = "liveHref" in project ? (project.liveHref as string | undefined) : undefined;
+  const playStoreHref = "playStoreHref" in project ? (project.playStoreHref as string | undefined) : undefined;
+  const caseStudy = "caseStudy" in project ? (project.caseStudy as CaseStudyData) : undefined;
+
+  if (caseStudy) {
+    return (
+      <PortfolioShell>
+        <CaseStudyLayout
+          liveHref={liveHref}
+          playStoreHref={playStoreHref}
+          sections={caseStudy.sections}
+          shortDescription={caseStudy.shortDescription}
+          tags={project.tags}
+          title={project.title}
+          valueProposition={caseStudy.valueProposition}
+          video={video}
+        />
+      </PortfolioShell>
+    );
+  }
+
   return (
     <PortfolioShell>
       <article>
@@ -37,17 +67,53 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="mt-5 max-w-4xl leading-relaxed text-stone-600 dark:text-[#a0a0a0] 2xl:text-2xl">
             {project.description}
           </p>
+
+          {(liveHref || playStoreHref) && (
+            <div className="mt-6 flex flex-wrap gap-5">
+              {playStoreHref && (
+                <a
+                  className="text-xs font-semibold uppercase tracking-[0.12em] text-stone-950 underline underline-offset-4 hover:text-stone-600 dark:text-white dark:hover:text-[#a0a0a0]"
+                  href={playStoreHref}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Google Play Store ↗
+                </a>
+              )}
+              {liveHref && (
+                <a
+                  className="text-xs font-semibold uppercase tracking-[0.12em] text-stone-950 underline underline-offset-4 hover:text-stone-600 dark:text-white dark:hover:text-[#a0a0a0]"
+                  href={liveHref}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Live Site ↗
+                </a>
+              )}
+            </div>
+          )}
         </div>
 
         <div className="relative mb-12 aspect-video overflow-hidden border border-stone-950 bg-stone-100 dark:border-[#333333] dark:bg-[#242424] 2xl:mb-16">
-          <Image
-            alt={project.imageAlt}
-            className="object-cover grayscale"
-            fill
-            priority
-            sizes="(min-width: 768px) 80vw, 100vw"
-            src={project.image}
-          />
+          {video ? (
+            <video
+              autoPlay
+              className="absolute inset-0 h-full w-full object-cover"
+              loop
+              muted
+              playsInline
+              src={video}
+            />
+          ) : (
+            <Image
+              alt={project.imageAlt}
+              className="object-cover grayscale"
+              fill
+              priority
+              sizes="(min-width: 768px) 80vw, 100vw"
+              src={project.image}
+            />
+          )}
         </div>
 
         <SectionHeading>Project Notes</SectionHeading>

@@ -15,50 +15,64 @@ function Tag({ children }: { children: React.ReactNode }) {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  if (project.featured) {
+  const video = "video" in project ? (project.video as string | undefined) : undefined;
+
+  if ("featured" in project && project.featured) {
     return (
-      <article className="group border border-stone-950 bg-white p-5 transition-all hover:bg-stone-100 dark:border-[#333333] dark:bg-[#242424] dark:hover:bg-[#2a2a2a] sm:p-6 md:col-span-2 2xl:col-span-1 2xl:p-6">
-        <div className="flex flex-col gap-6 md:flex-row 2xl:flex-col">
-          <div className="relative aspect-square overflow-hidden bg-stone-100 dark:bg-[#333333] md:w-1/3 2xl:aspect-video 2xl:w-full">
-            <Image
-              alt={project.imageAlt}
-              className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-              fill
-              sizes="(min-width: 768px) 260px, 100vw"
-              src={project.image}
-            />
+      <Link
+        className="group flex h-full flex-col border border-stone-950 bg-white p-5 [transition:transform_150ms_cubic-bezier(0.23,1,0.32,1)] hover:bg-stone-50 active:scale-[0.98] dark:border-[#333333] dark:bg-[#242424] dark:hover:bg-[#2a2a2a] sm:p-6"
+        href={project.href}
+        prefetch
+        transitionTypes={["portfolio-page"]}
+      >
+        <div className="flex flex-1 flex-col gap-6 md:flex-row 2xl:flex-col">
+          <div className="relative aspect-square overflow-hidden bg-stone-100 dark:bg-[#333333] md:w-2/5 md:self-start 2xl:w-full">
+            {video ? (
+              <video
+                autoPlay
+                className="absolute inset-0 h-full w-full object-cover"
+                loop
+                muted
+                playsInline
+                src={video}
+              />
+            ) : (
+              <Image
+                alt={project.imageAlt}
+                className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                fill
+                sizes="(min-width: 768px) 320px, 100vw"
+                src={project.image}
+              />
+            )}
           </div>
 
           <div className="flex flex-1 flex-col">
-            <h3 className="mb-2 font-serif text-xl font-semibold text-stone-950 dark:text-white 2xl:text-[1.65rem]">{project.title}</h3>
-            <p className="mb-6 leading-relaxed text-stone-600 dark:text-[#a0a0a0] 2xl:text-lg">{project.description}</p>
+            <h3 className="mb-2 font-serif text-xl font-semibold text-stone-950 underline-offset-4 group-hover:underline dark:text-white 2xl:text-[1.65rem]">
+              {project.title}
+            </h3>
+            <p className="mb-6 flex-1 leading-relaxed text-stone-600 dark:text-[#a0a0a0] 2xl:text-lg">
+              {project.description}
+            </p>
 
-            <div className="mt-auto flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between 2xl:items-start">
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </div>
-
-              <div className="flex gap-4">
-                {project.repositoryHref ? (
-                  <a className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.08em] hover:underline dark:text-white 2xl:text-xs" href={project.repositoryHref}>
-                    GitHub <Icon className="size-3.5" name="github" />
-                  </a>
-                ) : null}
-                <Link className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.08em] hover:underline dark:text-white 2xl:text-xs" href={project.href} prefetch transitionTypes={["portfolio-page"]}>
-                  Case Study <Icon className="size-3.5" name="rocket" />
-                </Link>
-              </div>
+            <div className="mt-auto flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
             </div>
           </div>
         </div>
-      </article>
+      </Link>
     );
   }
 
   return (
-    <article className="group flex h-full flex-col border border-stone-950 bg-white p-5 transition-all hover:bg-stone-100 dark:border-[#333333] dark:bg-[#242424] dark:hover:bg-[#2a2a2a] sm:p-6 2xl:p-6">
+    <Link
+      className="group flex h-full flex-col border border-stone-950 bg-white p-5 [transition:transform_150ms_cubic-bezier(0.23,1,0.32,1)] hover:bg-stone-100 active:scale-[0.98] dark:border-[#333333] dark:bg-[#242424] dark:hover:bg-[#2a2a2a] sm:p-6 2xl:p-6"
+      href={project.href}
+      prefetch
+      transitionTypes={["portfolio-page"]}
+    >
       <div className="relative mb-4 aspect-video overflow-hidden bg-stone-100 dark:bg-[#333333]">
         <Image
           alt={project.imageAlt}
@@ -69,7 +83,7 @@ function ProjectCard({ project }: { project: Project }) {
         />
       </div>
 
-      <h3 className="mb-2 font-serif text-xl font-semibold text-stone-950 dark:text-white 2xl:text-[1.65rem]">{project.title}</h3>
+      <h3 className="mb-2 font-serif text-xl font-semibold text-stone-950 underline-offset-4 group-hover:underline dark:text-white 2xl:text-[1.65rem]">{project.title}</h3>
       <p className="mb-6 flex-1 text-sm leading-relaxed text-stone-600 dark:text-[#a0a0a0] 2xl:text-lg">{project.description}</p>
 
       <div className="mt-auto flex items-center justify-between border-t border-stone-200 pt-4 dark:border-[#333333] 2xl:pt-5">
@@ -78,20 +92,26 @@ function ProjectCard({ project }: { project: Project }) {
             <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
-        <Link aria-label={`Open ${project.title}`} className="text-stone-950 transition-colors hover:text-blue-700 dark:text-white dark:hover:text-[#a0a0a0]" href={project.href} prefetch transitionTypes={["portfolio-page"]}>
-          <Icon className="size-5 2xl:size-5" name="external" />
-        </Link>
+        <Icon className="size-5 text-stone-950 dark:text-white 2xl:size-5" name="external" />
       </div>
-    </article>
+    </Link>
   );
 }
 
 export function ProjectsSection() {
+  const featuredProject = projects.find((p) => "featured" in p && p.featured);
+  const regularProjects = projects.filter((p) => !("featured" in p && p.featured)).slice(0, 2);
+
   return (
     <section className="mb-12 scroll-mt-24 2xl:mb-16" id="projects">
       <SectionHeading>Selected Projects</SectionHeading>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 2xl:grid-cols-3 2xl:gap-6">
-        {projects.map((project) => (
+        {featuredProject && (
+          <div className="md:col-span-2 2xl:col-span-1 2xl:contents">
+            <ProjectCard project={featuredProject} />
+          </div>
+        )}
+        {regularProjects.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}
       </div>

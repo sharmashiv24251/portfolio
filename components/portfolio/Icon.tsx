@@ -4,6 +4,7 @@ import {
   ExternalLink,
   FileText,
   GitBranch,
+  Globe,
   Link,
   Mail,
   Microscope,
@@ -11,6 +12,7 @@ import {
   Phone,
   Printer,
   Rocket,
+  Smartphone,
   Sun,
   type LucideIcon,
 } from "lucide-react";
@@ -21,6 +23,7 @@ const icons = {
   curriculum: FileText,
   external: ExternalLink,
   github: Code2,
+  globe: Globe,
   instagram: Link,
   linkedin: Link,
   link: Link,
@@ -31,6 +34,7 @@ const icons = {
   projects: GitBranch,
   research: Microscope,
   rocket: Rocket,
+  smartphone: Smartphone,
   sun: Sun,
 } satisfies Record<string, LucideIcon>;
 

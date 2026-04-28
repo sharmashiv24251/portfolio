@@ -1,3 +1,4 @@
+import { ContributionsSection } from "@/components/portfolio/ContributionsSection";
 import { EducationSection } from "@/components/portfolio/EducationSection";
 import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { Hero } from "@/components/portfolio/Hero";
@@ -13,6 +14,7 @@ export default function Home() {
       <ProjectsSection />
       <SkillsSection />
       <EducationSection />
+      <ContributionsSection />
     </PortfolioShell>
   );
 }

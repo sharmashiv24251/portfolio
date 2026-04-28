@@ -41,6 +41,14 @@ body *::after {
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 ::view-transition-old(.portfolio-page),
 ::view-transition-new(.portfolio-page) {
   animation-duration: 460ms;
