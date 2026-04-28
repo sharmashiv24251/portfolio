@@ -1,15 +1,18 @@
+import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function TopNav() {
   return (
     <header className="no-print sticky top-0 z-50 border-b border-stone-950 bg-[#fdfcfb]/95 backdrop-blur dark:border-[#333333] dark:bg-[#1a1a1a]/95 md:hidden">
       <nav className="mx-auto flex w-full max-w-5xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
-        <a
+        <Link
           className="font-serif text-sm font-bold uppercase tracking-[0.22em] text-stone-950 dark:text-white sm:text-xl"
-          href="#hero"
+          href="/"
+          prefetch
+          transitionTypes={["portfolio-page"]}
         >
           Portfolio
-        </a>
+        </Link>
 
         <div className="flex items-center gap-3">
           <a

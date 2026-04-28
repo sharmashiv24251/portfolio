@@ -6,9 +6,10 @@ export const navItems = [
 ] as const;
 
 export const sideNavItems = [
-  { label: "Experience", href: "#experience", icon: "research" },
-  { label: "Projects", href: "#projects", icon: "projects" },
-  { label: "Skills", href: "#skills", icon: "code" },
+  { label: "Experience", href: "/#experience", sectionId: "experience", icon: "research" },
+  { label: "Projects", href: "/#projects", sectionId: "projects", icon: "projects" },
+  { label: "Skills", href: "/#skills", sectionId: "skills", icon: "code" },
+  { label: "Blog", href: "/blogs", icon: "archive" },
 ] as const;
 
 export const contactLinks = [
@@ -81,6 +82,7 @@ export const companyProfiles = {
 
 export const projects = [
   {
+    slug: "image-layout-builder",
     title: "ImageLayoutBuilder",
     description:
       "A sophisticated grid layout engine that allows users to create print-ready layouts with sub-pixel precision. Built with React Canvas.",
@@ -88,9 +90,15 @@ export const projects = [
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Code editor interface with colorful syntax highlighting",
     tags: ["React", "Canvas"],
-    href: "#",
+    href: "/project/image-layout-builder",
+    details: [
+      "Built a precise layout editor for print-ready image compositions.",
+      "Designed canvas interactions for sizing, spacing, and export flows.",
+      "Focused on predictable rendering and a fast editorial workflow.",
+    ],
   },
   {
+    slug: "blue-bnb",
     title: "Blue BnB",
     description:
       "Full-stack luxury rental platform featuring real-time booking, secure payments through Stripe, and advanced map filtering.",
@@ -98,9 +106,15 @@ export const projects = [
       "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Modern minimalist rental home with clean architecture",
     tags: ["Next.js", "Prisma"],
-    href: "#",
+    href: "/project/blue-bnb",
+    details: [
+      "Created booking flows, listing pages, and map-driven discovery patterns.",
+      "Integrated secure payment and reservation state across the stack.",
+      "Optimized the interface for repeat browsing and quick comparison.",
+    ],
   },
   {
+    slug: "token-portfolio",
     title: "Token Portfolio",
     description:
       "A high-performance crypto asset tracker integrating multiple exchange APIs. Features automated tax reporting and tax-loss harvesting suggestions.",
@@ -108,11 +122,31 @@ export const projects = [
       "https://images.unsplash.com/photo-1642104704074-907c0698cbd9?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Abstract digital finance visualization",
     tags: ["Redux Toolkit", "Chart.js", "Node.js"],
-    href: "#",
+    href: "/project/token-portfolio",
     repositoryHref: "#",
     featured: true,
+    details: [
+      "Aggregated exchange data into a consolidated portfolio interface.",
+      "Built performance-minded charting and reporting surfaces.",
+      "Explored automated tax reporting and loss-harvesting suggestions.",
+    ],
   },
 ];
+
+export const blogPosts = [
+  {
+    title: "Designing Dense Interfaces Without Making Them Feel Heavy",
+    period: "April 2026",
+    summary:
+      "Notes on typography, spacing, and rhythm for portfolio and product surfaces that need to carry a lot of information.",
+  },
+  {
+    title: "What AI Coding Tools Change About Frontend Craft",
+    period: "April 2026",
+    summary:
+      "A practical look at using assisted development workflows while keeping taste and review judgment firmly in the loop.",
+  },
+] as const;
 
 export const skillGroups = [
   {

@@ -16,11 +16,6 @@ export function ThemeToggle({ variant = "icon" }: ThemeToggleProps) {
       localStorage.setItem("portfolio-color-theme", nextTheme);
     };
 
-    if ("startViewTransition" in document) {
-      document.startViewTransition(applyTheme);
-      return;
-    }
-
     applyTheme();
   }
 

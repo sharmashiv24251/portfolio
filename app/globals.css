@@ -32,66 +32,6 @@ body {
   overflow-x: clip;
 }
 
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  body,
-  body * {
-    cursor: none;
-  }
-
-  .editorial-cursor-ring,
-  .editorial-cursor-dot {
-    pointer-events: none;
-    position: fixed;
-    z-index: 9999;
-    transform: translate3d(var(--cursor-x, -100px), var(--cursor-y, -100px), 0)
-      translate(-50%, -50%);
-    will-change: transform, opacity;
-  }
-
-  .editorial-cursor-ring {
-    border: 1px solid color-mix(in srgb, var(--foreground) 70%, transparent);
-    height: 2.25rem;
-    width: 2.25rem;
-    transition:
-      opacity 180ms ease,
-      scale 260ms cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 520ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .editorial-cursor-ring::before,
-  .editorial-cursor-ring::after {
-    background: color-mix(in srgb, var(--foreground) 55%, transparent);
-    content: "";
-    position: absolute;
-  }
-
-  .editorial-cursor-ring::before {
-    height: 1px;
-    left: 50%;
-    top: -0.35rem;
-    transform: translateX(-50%);
-    width: 0.5rem;
-  }
-
-  .editorial-cursor-ring::after {
-    height: 0.5rem;
-    left: -0.35rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-  }
-
-  .editorial-cursor-dot {
-    background: var(--foreground);
-    height: 0.28rem;
-    transition:
-      opacity 180ms ease,
-      scale 180ms ease,
-      background-color 520ms cubic-bezier(0.22, 1, 0.36, 1);
-    width: 0.28rem;
-  }
-}
-
 body,
 body *,
 body *::before,
@@ -101,37 +41,41 @@ body *::after {
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 620ms;
+::view-transition-old(.portfolio-page),
+::view-transition-new(.portfolio-page) {
+  animation-duration: 460ms;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-::view-transition-old(root) {
-  animation-name: theme-fade-out;
+::view-transition-old(.portfolio-page) {
+  animation-name: portfolio-page-out;
 }
 
-::view-transition-new(root) {
-  animation-name: theme-fade-in;
+::view-transition-new(.portfolio-page) {
+  animation-name: portfolio-page-in;
 }
 
-@keyframes theme-fade-out {
+@keyframes portfolio-page-out {
   from {
     opacity: 1;
+    transform: translateY(0) scale(1);
   }
 
   to {
-    opacity: 0.18;
+    opacity: 0;
+    transform: translateY(-10px) scale(0.985);
   }
 }
 
-@keyframes theme-fade-in {
+@keyframes portfolio-page-in {
   from {
-    opacity: 0.18;
+    opacity: 0;
+    transform: translateY(14px) scale(1.01);
   }
 
   to {
     opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -143,8 +87,8 @@ body *::after {
     transition-duration: 1ms;
   }
 
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
+  ::view-transition-old(.portfolio-page),
+  ::view-transition-new(.portfolio-page) {
     animation-duration: 1ms;
   }
 }

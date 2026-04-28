@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { projects } from "@/data/portfolio";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
@@ -45,9 +46,9 @@ function ProjectCard({ project }: { project: Project }) {
                     GitHub <Icon className="size-3.5" name="github" />
                   </a>
                 ) : null}
-                <a className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.08em] hover:underline dark:text-white 2xl:text-xs" href={project.href}>
-                  Live Demo <Icon className="size-3.5" name="rocket" />
-                </a>
+                <Link className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.08em] hover:underline dark:text-white 2xl:text-xs" href={project.href} prefetch transitionTypes={["portfolio-page"]}>
+                  Case Study <Icon className="size-3.5" name="rocket" />
+                </Link>
               </div>
             </div>
           </div>
@@ -77,9 +78,9 @@ function ProjectCard({ project }: { project: Project }) {
             <Tag key={tag}>{tag}</Tag>
           ))}
         </div>
-        <a aria-label={`Open ${project.title}`} className="text-stone-950 transition-colors hover:text-blue-700 dark:text-white dark:hover:text-[#a0a0a0]" href={project.href}>
+        <Link aria-label={`Open ${project.title}`} className="text-stone-950 transition-colors hover:text-blue-700 dark:text-white dark:hover:text-[#a0a0a0]" href={project.href} prefetch transitionTypes={["portfolio-page"]}>
           <Icon className="size-5 2xl:size-5" name="external" />
-        </a>
+        </Link>
       </div>
     </article>
   );

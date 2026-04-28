@@ -1,17 +1,24 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { sideNavItems } from "@/data/portfolio";
 import { Icon } from "./Icon";
 import { ThemeToggle } from "./ThemeToggle";
 
-type SideNavHref = (typeof sideNavItems)[number]["href"];
-
 export function SideNav() {
-  const [activeHref, setActiveHref] = useState<SideNavHref>(sideNavItems[0].href);
+  const pathname = usePathname();
+  const [activeSectionHref, setActiveSectionHref] = useState<string>(sideNavItems[0].href);
+  const activeHref = pathname === "/" ? activeSectionHref : pathname;
 
   useEffect(() => {
-    const sectionIds = sideNavItems.map((item) => item.href.slice(1));
+    if (pathname !== "/") {
+      return;
+    }
+
+    const sectionItems = sideNavItems.filter((item) => "sectionId" in item);
+    const sectionIds = sectionItems.map((item) => item.sectionId);
 
     function updateActiveSection() {
       const readingLine = window.innerHeight * 0.32;
@@ -26,7 +33,7 @@ export function SideNav() {
         return sectionTop <= readingLine ? sectionId : current;
       }, sectionIds[0]);
 
-      setActiveHref(`#${activeSection}` as SideNavHref);
+      setActiveSectionHref(`/#${activeSection}`);
     }
 
     updateActiveSection();
@@ -37,17 +44,17 @@ export function SideNav() {
       window.removeEventListener("scroll", updateActiveSection);
       window.removeEventListener("resize", updateActiveSection);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <aside className="no-print fixed left-0 top-0 hidden h-full w-56 flex-col border-r border-stone-950 bg-[#fdfcfb] pt-7 dark:border-[#333333] dark:bg-[#1a1a1a] md:flex lg:w-64 xl:w-72 xl:pt-8 2xl:w-[22rem] 2xl:pt-12">
       <div className="px-5 lg:px-6 2xl:px-8">
-        <a
+        <Link
           className="font-serif text-lg font-bold uppercase tracking-[0.18em] text-stone-950 dark:text-white lg:text-xl lg:tracking-[0.22em] 2xl:text-2xl"
-          href="#hero"
+          href="/"
         >
           Portfolio
-        </a>
+        </Link>
       </div>
 
       <nav className="mt-8 2xl:mt-10">
@@ -55,7 +62,7 @@ export function SideNav() {
           const isActive = activeHref === item.href;
 
           return (
-            <a
+            <Link
               aria-current={isActive ? "true" : undefined}
               key={item.href}
               className={`flex items-center gap-2 px-5 py-3 font-serif text-xs uppercase tracking-[0.14em] transition-all lg:gap-3 lg:px-6 lg:tracking-[0.18em] 2xl:gap-4 2xl:px-8 2xl:py-4 2xl:text-sm ${
@@ -64,10 +71,12 @@ export function SideNav() {
                   : "border-l-4 border-transparent text-stone-500 hover:bg-stone-100 dark:text-[#a0a0a0] dark:hover:bg-[#242424] dark:hover:text-white"
               }`}
               href={item.href}
+              prefetch
+              transitionTypes={["portfolio-page"]}
             >
               <Icon className="size-4 shrink-0 2xl:size-5" name={item.icon} />
               {item.label}
-            </a>
+            </Link>
           );
         })}
       </nav>
