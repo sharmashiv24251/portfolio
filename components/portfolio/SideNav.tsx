@@ -62,7 +62,7 @@ export function SideNav() {
           const isActive = activeHref === item.href;
 
           return (
-            <Link
+              <Link
               aria-current={isActive ? "true" : undefined}
               key={item.href}
               className={`flex items-center gap-2 px-5 py-3 font-serif text-xs uppercase tracking-[0.14em] transition-all lg:gap-3 lg:px-6 lg:tracking-[0.18em] 2xl:gap-4 2xl:px-8 2xl:py-4 2xl:text-sm ${
@@ -72,7 +72,6 @@ export function SideNav() {
               }`}
               href={item.href}
               prefetch
-              transitionTypes={["portfolio-page"]}
             >
               <Icon className="size-4 shrink-0 2xl:size-5" name={item.icon} />
               {item.label}

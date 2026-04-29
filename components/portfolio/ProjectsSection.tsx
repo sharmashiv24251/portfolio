@@ -22,7 +22,6 @@ function ProjectCard({ project }: { project: Project }) {
         className="group flex h-full flex-col border border-stone-950 bg-white p-5 [transition:transform_150ms_cubic-bezier(0.23,1,0.32,1)] hover:bg-stone-50 active:scale-[0.98] dark:border-[#333333] dark:bg-[#242424] dark:hover:bg-[#2a2a2a] sm:p-6"
         href={project.href}
         prefetch
-        transitionTypes={["portfolio-page"]}
       >
         <div className="flex flex-1 flex-col gap-6 md:flex-row 2xl:flex-col">
           <div className="relative aspect-square overflow-hidden bg-stone-100 dark:bg-[#333333] md:w-2/5 md:self-start 2xl:w-full">
@@ -70,7 +69,6 @@ function ProjectCard({ project }: { project: Project }) {
       className="group flex h-full flex-col border border-stone-950 bg-white p-5 [transition:transform_150ms_cubic-bezier(0.23,1,0.32,1)] hover:bg-stone-100 active:scale-[0.98] dark:border-[#333333] dark:bg-[#242424] dark:hover:bg-[#2a2a2a] sm:p-6 2xl:p-6"
       href={project.href}
       prefetch
-      transitionTypes={["portfolio-page"]}
     >
       <div className="relative mb-4 aspect-video overflow-hidden bg-stone-100 dark:bg-[#333333]">
         <Image

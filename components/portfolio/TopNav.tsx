@@ -9,7 +9,6 @@ export function TopNav() {
           className="font-serif text-sm font-bold uppercase tracking-[0.22em] text-stone-950 dark:text-white sm:text-xl"
           href="/"
           prefetch
-          transitionTypes={["portfolio-page"]}
         >
           Portfolio
         </Link>

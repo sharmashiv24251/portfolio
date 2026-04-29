@@ -66,7 +66,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <Link
           className="inline-flex items-center gap-2 font-serif text-xs font-semibold uppercase tracking-[0.14em] text-stone-500 hover:text-stone-950 dark:text-[#a0a0a0] dark:hover:text-white"
           href="/#projects"
-          transitionTypes={["portfolio-page"]}
         >
           <Icon className="size-3.5" name="chevron-left" />
           Back to Projects
