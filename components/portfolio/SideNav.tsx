@@ -84,7 +84,9 @@ export function SideNav() {
       <div className="mt-auto space-y-3 px-5 pb-7 lg:px-6 lg:pb-8 2xl:space-y-4 2xl:px-8 2xl:pb-12">
         <a
           className="flex h-12 w-full items-center justify-center border border-stone-950 bg-[#fdfcfb] px-4 font-serif text-xs font-semibold uppercase tracking-[0.18em] text-stone-950 transition-colors hover:bg-stone-200 dark:border-[#333333] dark:bg-[#242424] dark:text-white dark:hover:bg-[#333333] 2xl:h-14 2xl:text-sm"
-          href="#"
+          href="https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/shivansh-sharma-resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Download Resume
         </a>

@@ -1,10 +1,9 @@
 import { blogPosts } from "@/data/portfolio";
-import { PortfolioShell } from "@/components/portfolio/PortfolioShell";
 import { SectionHeading } from "@/components/portfolio/SectionHeading";
 
 export default function BlogsPage() {
   return (
-    <PortfolioShell>
+    <>
       <section className="mb-12">
         <div className="mb-12 border-b border-stone-950 pb-8 dark:border-[#333333] 2xl:mb-16">
           <p className="mb-3 font-serif text-xs font-semibold uppercase tracking-[0.2em] text-stone-600 dark:text-[#a0a0a0]">
@@ -38,6 +37,6 @@ export default function BlogsPage() {
           ))}
         </div>
       </section>
-    </PortfolioShell>
+    </>
   );
 }

@@ -17,7 +17,9 @@ export function TopNav() {
         <div className="flex items-center gap-3">
           <a
             className="flex h-9 shrink-0 items-center border border-stone-950 px-3 font-serif text-xs uppercase tracking-wide transition-all hover:bg-stone-200 dark:border-[#333333] dark:text-white dark:hover:bg-[#242424] sm:h-10 sm:px-4 sm:text-sm"
-            href="#"
+            href="https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/shivansh-sharma-resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Download CV
           </a>
