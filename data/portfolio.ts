@@ -385,7 +385,7 @@ export const skillGroups = [
 export const education = {
   degree: "B.Tech in Electronics and Communication",
   institution: "Rewa Engineering College",
-  period: "Graduated 2021",
+  period: "Graduated 2025",
   summary:
     "Focused on signal processing and embedded systems. Developed a deep understanding of hardware-software abstraction, which informs my current approach to performant web architectures.",
 };
