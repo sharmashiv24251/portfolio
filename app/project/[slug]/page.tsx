@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/portfolio";
 import { PortfolioShell } from "@/components/portfolio/PortfolioShell";
 import { SectionHeading } from "@/components/portfolio/SectionHeading";
 import { CaseStudyLayout, type CaseStudySection } from "@/components/portfolio/CaseStudyLayout";
+import { Icon } from "@/components/portfolio/Icon";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -64,6 +66,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <PortfolioShell>
       <article>
+        <div className="mb-8 2xl:mb-12">
+          <Link
+            className="inline-flex items-center gap-2 font-serif text-xs font-semibold uppercase tracking-[0.14em] text-stone-500 hover:text-stone-950 dark:text-[#a0a0a0] dark:hover:text-white"
+            href="/#projects"
+            transitionTypes={["portfolio-page"]}
+          >
+            <Icon className="size-3.5" name="chevron-left" />
+            Back to Projects
+          </Link>
+        </div>
         <div className="mb-8 border-b border-stone-950 pb-8 dark:border-[#333333] 2xl:mb-12">
           <p className="mb-3 font-serif text-xs font-semibold uppercase tracking-[0.2em] text-stone-600 dark:text-[#a0a0a0]">
             Selected Project

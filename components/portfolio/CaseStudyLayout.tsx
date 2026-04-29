@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
 
@@ -79,6 +80,18 @@ export function CaseStudyLayout({
 
   return (
     <article>
+      {/* ── Back ── */}
+      <div className="mb-8 2xl:mb-12">
+        <Link
+          className="inline-flex items-center gap-2 font-serif text-xs font-semibold uppercase tracking-[0.14em] text-stone-500 hover:text-stone-950 dark:text-[#a0a0a0] dark:hover:text-white"
+          href="/#projects"
+          transitionTypes={["portfolio-page"]}
+        >
+          <Icon className="size-3.5" name="chevron-left" />
+          Back to Projects
+        </Link>
+      </div>
+
       {/* ── Hero ── */}
       <div className={`mb-14 grid grid-cols-1 items-start 2xl:mb-20 ${video ? "gap-10 md:grid-cols-[minmax(0,420px)_1fr] md:gap-12 lg:gap-16 2xl:gap-20" : "gap-8 xl:grid-cols-[minmax(0,420px)_1fr] xl:gap-12 2xl:gap-20"}`}>
         {/* Left — media: video or image */}

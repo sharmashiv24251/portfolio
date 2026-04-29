@@ -15,8 +15,9 @@ const notoSerif = Noto_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Shivansh Sharma | Scholar Portfolio",
-  description: "Portfolio of Shivansh Sharma, frontend and full-stack engineer.",
+  title: "Shivansh Sharma | Portfolio",
+  description:
+    "Portfolio of Shivansh Sharma, frontend and full-stack engineer.",
 };
 
 export default function RootLayout({
@@ -37,10 +38,10 @@ export default function RootLayout({
             __html: `
               try {
                 const storedTheme = localStorage.getItem("portfolio-color-theme");
-                if (storedTheme === "dark") {
-                  document.documentElement.classList.add("dark");
-                } else {
+                if (storedTheme === "light") {
                   document.documentElement.classList.remove("dark");
+                } else {
+                  document.documentElement.classList.add("dark");
                 }
               } catch {}
             `,

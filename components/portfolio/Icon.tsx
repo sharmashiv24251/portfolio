@@ -1,5 +1,6 @@
 import {
   Archive,
+  ChevronLeft,
   Code2,
   ExternalLink,
   FileText,
@@ -20,6 +21,7 @@ import {
 
 const icons = {
   archive: Archive,
+  "chevron-left": ChevronLeft,
   code: Code2,
   curriculum: FileText,
   external: ExternalLink,

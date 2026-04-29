@@ -37,7 +37,7 @@ body *,
 body *::before,
 body *::after {
   transition-duration: 520ms;
-  transition-property: background-color, border-color, color, fill, stroke, text-decoration-color, opacity, box-shadow;
+  transition-property: background-color, border-color, color, fill, stroke, text-decoration-color, box-shadow;
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
