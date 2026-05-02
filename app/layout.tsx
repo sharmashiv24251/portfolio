@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import { PortfolioShell } from "@/components/portfolio/PortfolioShell";
+import { canonicalUrl } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,9 +17,70 @@ const notoSerif = Noto_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Shivansh Sharma | Portfolio",
+  metadataBase: new URL(canonicalUrl("/")),
+  title:
+    "Shivansh Sharma | Frontend & Product Engineer — React, Next.js, React Native",
   description:
-    "Portfolio of Shivansh Sharma, frontend and full-stack engineer.",
+    "Shivansh Sharma is a Frontend and Product Engineer building production-grade apps with React, Next.js, and React Native. Currently at Envo, building Gud For Us.",
+  keywords: [
+    "Shivansh Sharma",
+    "Shivansh Sharma Frontend Engineer",
+    "Shivansh Sharma Full Stack Engineer",
+    "Shivansh Sharma React Developer",
+    "Shivansh Sharma Next.js Developer",
+    "Shivansh Sharma AI Engineer",
+    "Frontend Engineer",
+    "Full Stack Engineer",
+    "React Native Engineer",
+  ],
+  alternates: {
+    canonical: canonicalUrl("/"),
+  },
+  openGraph: {
+    title:
+      "Shivansh Sharma | Frontend & Product Engineer — React, Next.js, React Native",
+    description:
+      "Shivansh Sharma is a Frontend, Full-Stack, and Product Engineer building production-grade web, mobile, and AI-enabled apps with React, Next.js, React Native, TypeScript, and Node.js.",
+    url: canonicalUrl("/"),
+    siteName: "Shivansh Sharma",
+    type: "profile",
+  },
+  twitter: {
+    card: "summary",
+    title:
+      "Shivansh Sharma | Frontend & Product Engineer — React, Next.js, React Native",
+    description:
+      "Frontend, Full-Stack, and Product Engineer building production-grade web, mobile, and AI-enabled apps with React, Next.js, React Native, TypeScript, and Node.js.",
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Shivansh Sharma",
+  url: canonicalUrl("/"),
+  jobTitle: "Frontend / Product Engineer",
+  description:
+    "Frontend, full-stack, and AI-enabled product engineer building production-grade apps with React, Next.js, React Native, TypeScript, and Node.js.",
+  worksFor: { "@type": "Organization", name: "Envo" },
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "React Native",
+    "TypeScript",
+    "Tailwind CSS",
+    "Node.js",
+    "Express",
+    "PostgreSQL",
+    "MongoDB",
+    "Prisma",
+    "Vercel AI SDK",
+    "Google Gemini",
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/sharmashiv24251/",
+    "https://github.com/sharmashiv24251",
+  ],
 };
 
 export default function RootLayout({
@@ -34,6 +96,12 @@ export default function RootLayout({
       className={`${inter.variable} ${notoSerif.variable} h-full scroll-smooth antialiased`}
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
