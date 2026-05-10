@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Serif } from "next/font/google";
 import "./globals.css";
-import { PortfolioShell } from "@/components/portfolio/PortfolioShell";
 import { canonicalUrl } from "@/lib/site";
 
 const inter = Inter({
@@ -117,9 +116,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="flex min-h-full flex-col">
-        <PortfolioShell>{children}</PortfolioShell>
-      </body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }

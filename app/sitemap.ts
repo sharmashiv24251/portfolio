@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: canonicalUrl("/freelance/give-give"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
     ...projectRoutes,
   ];
 }
