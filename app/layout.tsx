@@ -44,13 +44,22 @@ export const metadata: Metadata = {
     url: canonicalUrl("/"),
     siteName: "Shivansh Sharma",
     type: "profile",
+    images: [
+      {
+        url: "/shivansh-og.webp",
+        width: 1200,
+        height: 630,
+        alt: "Shivansh Sharma — Frontend & Product Engineer",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title:
       "Shivansh Sharma | Frontend & Product Engineer — React, Next.js, React Native",
     description:
       "Frontend, Full-Stack, and Product Engineer building production-grade web, mobile, and AI-enabled apps with React, Next.js, React Native, TypeScript, and Node.js.",
+    images: ["/shivansh-og.webp"],
   },
 };
 
