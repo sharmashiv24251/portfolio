@@ -1,4 +1,5 @@
-import { blogPosts, education, experiences, projects, skillGroups } from "@/data/portfolio";
+import { blogPosts, type BlogBlock, type BlogPost, type RichTextContent } from "@/data/blogs";
+import { education, experiences, projects, skillGroups } from "@/data/portfolio";
 import { canonicalUrl } from "@/lib/site";
 
 function list(items: readonly string[]) {
@@ -7,6 +8,12 @@ function list(items: readonly string[]) {
 
 function tags(items: readonly string[]) {
   return items.join(", ");
+}
+
+function richTextMarkdown(content: RichTextContent) {
+  return content
+    .map((part) => (typeof part === "string" ? part : `\`${part.code}\``))
+    .join("");
 }
 
 function projectMarkdown(project: (typeof projects)[number]) {
@@ -124,7 +131,63 @@ function blogsMarkdown() {
   const lines = ["# Writing", "", `Canonical URL: ${canonicalUrl("/blogs")}`, ""];
 
   for (const post of blogPosts) {
-    lines.push(`## ${post.title}`, "", `Published: ${post.period}`, "", post.summary, "");
+    lines.push(
+      `## ${post.title}`,
+      "",
+      `Published: ${post.period}`,
+      "",
+      post.summary,
+      "",
+      `URL: ${canonicalUrl(`/blogs/${post.slug}`)}`,
+      "",
+    );
+  }
+
+  return lines.join("\n").trim();
+}
+
+function blogBlockMarkdown(block: BlogBlock) {
+  switch (block.kind) {
+    case "paragraph":
+      return richTextMarkdown(block.content);
+    case "heading":
+      return `## ${block.text}`;
+    case "code":
+      return [
+        `\`\`\`${block.language}`,
+        block.code,
+        "```",
+        block.caption ? `Caption: ${block.caption}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+    case "list":
+      return block.items
+        .map((item) => `- ${richTextMarkdown(item)}`)
+        .join("\n");
+    case "callout":
+      return `> ${richTextMarkdown(block.content)}`;
+  }
+}
+
+function blogPostMarkdown(post: BlogPost) {
+  const lines = [
+    `# ${post.title}`,
+    "",
+    post.summary,
+    "",
+    `Canonical URL: ${canonicalUrl(`/blogs/${post.slug}`)}`,
+    "",
+    `Published: ${post.period}`,
+    "",
+    `Video: ${post.videoUrl}`,
+    "",
+    `Tags: ${tags(post.tags)}`,
+    "",
+  ];
+
+  for (const block of post.blocks) {
+    lines.push(blogBlockMarkdown(block), "");
   }
 
   return lines.join("\n").trim();
@@ -137,6 +200,13 @@ export function markdownForPath(pathname: string) {
 
   if (pathname === "/blogs") {
     return blogsMarkdown();
+  }
+
+  const blogSlug = pathname.match(/^\/blogs\/([^/]+)$/)?.[1];
+
+  if (blogSlug) {
+    const post = blogPosts.find((item) => item.slug === blogSlug);
+    return post ? blogPostMarkdown(post) : null;
   }
 
   const projectSlug = pathname.match(/^\/project\/([^/]+)$/)?.[1];

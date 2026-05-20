@@ -348,21 +348,6 @@ export const projects = [
   },
 ];
 
-export const blogPosts = [
-  {
-    title: "Designing Dense Interfaces Without Making Them Feel Heavy",
-    period: "April 2026",
-    summary:
-      "Notes on typography, spacing, and rhythm for portfolio and product surfaces that need to carry a lot of information.",
-  },
-  {
-    title: "What AI Coding Tools Change About Frontend Craft",
-    period: "April 2026",
-    summary:
-      "A practical look at using assisted development workflows while keeping taste and review judgment firmly in the loop.",
-  },
-] as const;
-
 export const skillGroups = [
   {
     title: "Frontend",

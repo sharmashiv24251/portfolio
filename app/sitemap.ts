@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { blogPosts } from "@/data/blogs";
 import { projects } from "@/data/portfolio";
 import { canonicalUrl } from "@/lib/site";
 
@@ -9,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const projectRoutes = projects.map((project) => ({
     url: canonicalUrl(`/project/${project.slug}`),
     lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+  const blogRoutes = blogPosts.map((post) => ({
+    url: canonicalUrl(`/blogs/${post.slug}`),
+    lastModified: new Date(post.updatedAt),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
@@ -26,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    ...blogRoutes,
     ...projectRoutes,
   ];
 }
