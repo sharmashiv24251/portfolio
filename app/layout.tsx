@@ -21,29 +21,27 @@ const googleAnalyticsId = "G-4N79KF9DQN";
 
 export const metadata: Metadata = {
   metadataBase: new URL(canonicalUrl("/")),
-  title:
-    "Shivansh Sharma | Frontend & Product Engineer — React, Next.js, React Native",
+  title: "Shivansh Sharma | AI Product Engineer — React Native, Next.js, TypeScript",
   description:
-    "Shivansh Sharma is a Frontend and Product Engineer building production-grade apps with React, Next.js, and React Native. Currently at Envo, building Gud For Us.",
+    "Shivansh Sharma is an AI product engineer who builds and ships production AI-powered apps fast. React Native, Next.js, TypeScript, Supabase. Available for remote work.",
   keywords: [
     "Shivansh Sharma",
-    "Shivansh Sharma Frontend Engineer",
-    "Shivansh Sharma Full Stack Engineer",
-    "Shivansh Sharma React Developer",
-    "Shivansh Sharma Next.js Developer",
+    "AI Product Engineer",
     "Shivansh Sharma AI Engineer",
-    "Frontend Engineer",
-    "Full Stack Engineer",
+    "Shivansh Sharma React Native Developer",
+    "Shivansh Sharma Next.js Developer",
+    "AI MVP Engineer",
     "React Native Engineer",
+    "Frontend Engineer India",
+    "Remote AI Product Engineer",
   ],
   alternates: {
     canonical: canonicalUrl("/"),
   },
   openGraph: {
-    title:
-      "Shivansh Sharma | Frontend & Product Engineer — React, Next.js, React Native",
+    title: "Shivansh Sharma | AI Product Engineer — React Native, Next.js, TypeScript",
     description:
-      "Shivansh Sharma is a Frontend, Full-Stack, and Product Engineer building production-grade web, mobile, and AI-enabled apps with React, Next.js, React Native, TypeScript, and Node.js.",
+      "I build AI-powered products that ship. React Native · Next.js · TypeScript · Supabase. Available for founders building AI MVPs.",
     url: canonicalUrl("/"),
     siteName: "Shivansh Sharma",
     type: "profile",
@@ -52,22 +50,21 @@ export const metadata: Metadata = {
         url: canonicalUrl("/shivansh-og.webp"),
         width: 1200,
         height: 630,
-        alt: "Shivansh Sharma — Frontend & Product Engineer",
+        alt: "Shivansh Sharma — AI Product Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Shivansh Sharma | Frontend & Product Engineer — React, Next.js, React Native",
+    title: "Shivansh Sharma | AI Product Engineer — React Native, Next.js, TypeScript",
     description:
-      "Frontend, Full-Stack, and Product Engineer building production-grade web, mobile, and AI-enabled apps with React, Next.js, React Native, TypeScript, and Node.js.",
+      "I build AI-powered products that ship. React Native · Next.js · TypeScript · Supabase. Available for founders building AI MVPs.",
     images: [
       {
         url: canonicalUrl("/shivansh-og.webp"),
         width: 1200,
         height: 630,
-        alt: "Shivansh Sharma — Frontend & Product Engineer",
+        alt: "Shivansh Sharma — AI Product Engineer",
       },
     ],
   },
@@ -78,9 +75,9 @@ const personJsonLd = {
   "@type": "Person",
   name: "Shivansh Sharma",
   url: canonicalUrl("/"),
-  jobTitle: "Frontend / Product Engineer",
+  jobTitle: "AI Product Engineer",
   description:
-    "Frontend, full-stack, and AI-enabled product engineer building production-grade apps with React, Next.js, React Native, TypeScript, and Node.js.",
+    "AI product engineer building and shipping production-grade apps with React Native, Next.js, TypeScript, and Supabase.",
   worksFor: { "@type": "Organization", name: "Envo" },
   knowsAbout: [
     "React",
@@ -121,24 +118,20 @@ export default function RootLayout({
             __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const storedTheme = localStorage.getItem("portfolio-color-theme");
-                if (storedTheme === "light") {
-                  document.documentElement.classList.remove("dark");
-                } else {
-                  document.documentElement.classList.add("dark");
-                }
-              } catch {}
-            `,
-          }}
-        />
       </head>
       <body className="flex min-h-full flex-col">
         <PortfolioShell>{children}</PortfolioShell>
       </body>
+      <Script id="theme-init" strategy="beforeInteractive">{`
+        try {
+          const storedTheme = localStorage.getItem("portfolio-color-theme");
+          if (storedTheme === "light") {
+            document.documentElement.classList.remove("dark");
+          } else {
+            document.documentElement.classList.add("dark");
+          }
+        } catch {}
+      `}</Script>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
         strategy="afterInteractive"

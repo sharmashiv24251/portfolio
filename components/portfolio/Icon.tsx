@@ -1,5 +1,6 @@
 import {
   Archive,
+  Briefcase,
   ChevronLeft,
   Code2,
   ExternalLink,
@@ -16,11 +17,13 @@ import {
   Rocket,
   Smartphone,
   Sun,
+  User,
   type LucideIcon,
 } from "lucide-react";
 
 const icons = {
   archive: Archive,
+  briefcase: Briefcase,
   "chevron-left": ChevronLeft,
   code: Code2,
   curriculum: FileText,
@@ -40,6 +43,7 @@ const icons = {
   rocket: Rocket,
   smartphone: Smartphone,
   sun: Sun,
+  user: User,
 } satisfies Record<string, LucideIcon>;
 
 export type PortfolioIconName = keyof typeof icons;

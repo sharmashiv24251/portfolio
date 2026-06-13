@@ -1,34 +1,20 @@
 export const navItems = [
-  { label: "Experience", href: "#experience" },
+  { label: "Work", href: "#work" },
   { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Education", href: "#education" },
+  { label: "Stack", href: "#stack" },
+  { label: "About", href: "#about" },
 ] as const;
 
 export const sideNavItems = [
-  {
-    label: "Experience",
-    href: "/#experience",
-    sectionId: "experience",
-    icon: "research",
-  },
-  {
-    label: "Projects",
-    href: "/#projects",
-    sectionId: "projects",
-    icon: "projects",
-  },
-  { label: "Skills", href: "/#skills", sectionId: "skills", icon: "code" },
+  { label: "Work", href: "/#work", sectionId: "work", icon: "briefcase" },
+  { label: "Projects", href: "/#projects", sectionId: "projects", icon: "projects" },
+  { label: "Stack", href: "/#stack", sectionId: "stack", icon: "code" },
+  { label: "About", href: "/#about", sectionId: "about", icon: "user" },
   { label: "Blog", href: "/blogs", icon: "archive" },
 ] as const;
 
 export const contactLinks = [
-  {
-    label: "codersharma24251@gmail.com",
-    href: "mailto:codersharma24251@gmail.com",
-    icon: "mail",
-  },
-  { label: "+91 74772 13559", href: "tel:+917477213559", icon: "phone" },
+  { label: "hi@shivansh.pro", href: "mailto:hi@shivansh.pro", icon: "mail" },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/sharmashiv24251/",
@@ -62,9 +48,9 @@ export const footerLinks = [
 export const profileHover = {
   initials: "SS",
   title: "Shivansh Sharma",
-  subtitle: "Frontend / Product Engineer",
+  subtitle: "AI Product Engineer",
   summary:
-    "I build and ship frontend features end-to-end using React, React Native, and Next.js,  from API integration to polished user experiences. I focus on clean architecture, real-world edge cases, and fast iteration to deliver reliable, production-ready interfaces.",
+    "I build and ship AI-powered apps end to end — React Native, Next.js, TypeScript, Supabase. Currently at Envo, building Gud For Us.",
 };
 
 export const experiences = [
@@ -129,6 +115,39 @@ export const companyProfiles = {
   },
 } as const;
 
+export const featuredWork = {
+  title: "Gud For Us",
+  company: "Envo",
+  companyHref: "https://www.envo.club/",
+  role: "Frontend Engineer",
+  liveHref: "https://gudforus.com/",
+  playStoreHref:
+    "https://play.google.com/store/apps/details?id=com.app.gudforus&hl=en",
+  video:
+    "https://ihichdejyaeignzbnfgb.supabase.co/storage/v1/object/public/website-assets/hero-vid.mp4",
+  image:
+    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80",
+  imageAlt: "Gud For Us AI ingredient scanner mobile app",
+  tags: [
+    "React Native",
+    "Expo",
+    "TypeScript",
+    "NativeWind",
+    "Supabase",
+    "React Query",
+    "Gemini AI",
+  ],
+  description:
+    "A consumer-facing mobile app that scans food and cosmetic products and delivers AI-generated ingredient analysis, personalized health scores, and compatibility insights. Built and shipped at Envo.",
+  contributions: [
+    "Built the entire frontend using React Native (Expo + NativeWind) and TypeScript — from blank canvas to shipped app.",
+    "Designed a personalized onboarding system that tailors AI-generated health scores to each user's profile.",
+    "Integrated Gemini AI responses into a structured UI, normalizing variable output into consistent ingredient breakdowns.",
+    "Managed all API state with React Query, reducing redundant requests and enabling optimistic, cache-aware interactions.",
+  ],
+  caseStudyHref: "/project/good-for-us",
+};
+
 export const projects = [
   {
     slug: "good-for-us",
@@ -143,7 +162,15 @@ export const projects = [
     liveHref: "https://gudforus.com/",
     playStoreHref:
       "https://play.google.com/store/apps/details?id=com.app.gudforus&hl=en",
-    tags: ["React Native", "Expo", "TypeScript", "NativeWind", "Supabase", "React Query", "Gemini AI"],
+    tags: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "NativeWind",
+      "Supabase",
+      "React Query",
+      "Gemini AI",
+    ],
     href: "/project/good-for-us",
     featured: true,
     details: [
@@ -158,7 +185,7 @@ export const projects = [
         "AI-powered mobile app for analyzing food and cosmetic products, delivering ingredient insights, health scoring, and personalized compatibility.",
       valueProposition:
         "Helps users make better product choices by turning complex ingredient data into simple, personalized insights.",
-      role: "Frontend Owner · Product Contributor",
+      role: "Frontend Engineer · Built at Envo",
       sections: [
         {
           title: "Core Contribution",
@@ -263,11 +290,19 @@ export const projects = [
     image:
       "https://opfjwckyarxymdkzuwdk.supabase.co/storage/v1/object/public/temp-blue-bnb/token.png",
     imageAlt: "Token Portfolio crypto dashboard interface",
-    tags: ["React + Vite", "Redux Toolkit", "TanStack Query", "Tailwind CSS", "Wagmi", "RainbowKit"],
+    tags: [
+      "React + Vite",
+      "Redux Toolkit",
+      "TanStack Query",
+      "Tailwind CSS",
+      "Wagmi",
+      "RainbowKit",
+    ],
     href: "/project/token-portfolio",
     liveHref: "https://crypto-dashboard-taupe-theta.vercel.app/",
     repositoryHref: "https://github.com/sharmashiv24251/crypto-dashboard",
-    figmaHref: "https://www.figma.com/design/ICYVun3vhMh7nIHzMGUqdw/Token-Portfolio?node-id=0-1&p=f&t=PMbRHAZfRdMSztS3-0",
+    figmaHref:
+      "https://www.figma.com/design/ICYVun3vhMh7nIHzMGUqdw/Token-Portfolio?node-id=0-1&p=f&t=PMbRHAZfRdMSztS3-0",
     details: [
       "Built the dashboard UI for portfolio value, holdings, and watchlist management.",
       "Implemented token search, add-token flow, and editable holdings with live price data.",
@@ -330,42 +365,29 @@ export const projects = [
       ],
     },
   },
-  {
-    slug: "blue-bnb",
-    title: "Blue BnB",
-    description:
-      "Full-stack luxury rental platform featuring real-time booking, secure payments through Stripe, and advanced map filtering.",
-    image:
-      "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Modern minimalist rental home with clean architecture",
-    tags: ["Next.js", "Prisma"],
-    href: "/project/blue-bnb",
-    details: [
-      "Created booking flows, listing pages, and map-driven discovery patterns.",
-      "Integrated secure payment and reservation state across the stack.",
-      "Optimized the interface for repeat browsing and quick comparison.",
-    ],
-  },
 ];
 
-export const skillGroups = [
-  {
-    title: "Frontend",
-    skills: ["React / Next.js", "TypeScript", "Tailwind CSS", "D3.js / Canvas"],
-  },
-  {
-    title: "UI / State",
-    skills: ["Shadcn/UI", "Redux Toolkit", "Zustand", "Framer Motion"],
-  },
-  {
-    title: "Backend",
-    skills: ["Node.js / Express", "Prisma ORM", "PostgreSQL", "REST / GraphQL"],
-  },
-  {
-    title: "Tooling",
-    skills: ["Figma", "Git / GitHub", "Docker", "Vercel / AWS"],
-  },
-];
+export const stack = {
+  core: [
+    "React Native · Expo · NativeWind",
+    "Next.js",
+    "TypeScript",
+    "Supabase",
+    "React Query · TanStack",
+    "Redux Toolkit",
+    "Tailwind CSS",
+    "LLM APIs · Gemini",
+  ],
+  secondary: [
+    "Node.js · Express",
+    "Prisma · PostgreSQL",
+    "D3.js · Konva.js",
+    "Figma · Vercel",
+  ],
+};
+
+export const about =
+  "I'm a product engineer based in India, building and shipping AI-powered applications remotely. I work across the full frontend stack — React Native for mobile, Next.js for web, TypeScript, Supabase — and I own features end to end, from the first onboarding screen to production. I use AI tooling heavily to ship faster, and I care about clean architecture as much as fast delivery.";
 
 export const education = {
   degree: "B.Tech in Electronics and Communication",
@@ -374,3 +396,9 @@ export const education = {
   summary:
     "Focused on signal processing and embedded systems. Developed a deep understanding of hardware-software abstraction, which informs my current approach to performant web architectures.",
 };
+
+// Keep skillGroups as an alias for any code that references it during transition
+export const skillGroups = [
+  { title: "Core", skills: stack.core },
+  { title: "Also", skills: stack.secondary },
+];

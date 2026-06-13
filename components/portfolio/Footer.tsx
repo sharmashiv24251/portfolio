@@ -2,24 +2,40 @@ import { footerLinks } from "@/data/portfolio";
 
 export function Footer() {
   return (
-    <footer className="no-print flex w-full flex-col gap-5 border-t border-stone-950 px-5 py-8 dark:border-[#333333] sm:px-8 md:px-12 lg:flex-row lg:items-center lg:justify-between 2xl:px-24 2xl:py-10">
-      <p className="font-serif text-xs italic text-stone-600 dark:text-[#a0a0a0] 2xl:text-sm">
-        Last updated April 2026
-      </p>
-
-      <div className="flex flex-wrap gap-3">
-        {footerLinks.map((link) => (
+    <footer className="no-print w-full border-t border-stone-950 dark:border-[#333333]">
+      {/* Contact CTA strip */}
+      <div className="flex flex-col gap-4 border-b border-stone-950 px-5 py-6 dark:border-[#333333] sm:flex-row sm:items-center sm:justify-between sm:px-8 md:px-12 2xl:px-24 2xl:py-8">
+        <p className="font-serif text-sm text-stone-600 dark:text-[#a0a0a0] 2xl:text-base">
+          Building an AI product?{" "}
           <a
-            aria-label={link.label}
-            className="inline-flex size-9 items-center justify-center border border-stone-950 text-stone-950 transition-colors hover:bg-stone-200 dark:border-[#333333] dark:text-white dark:hover:bg-[#242424] 2xl:size-10"
-            href={link.href}
-            key={link.label}
-            rel="noreferrer"
-            target="_blank"
+            href="mailto:hi@shivansh.pro"
+            className="font-semibold text-stone-950 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-950 dark:text-white dark:decoration-[#444444] dark:hover:decoration-white"
           >
-            <FooterBrandIcon label={link.label} />
+            hi@shivansh.pro
           </a>
-        ))}
+        </p>
+
+        <div className="flex flex-wrap gap-3">
+          {footerLinks.map((link) => (
+            <a
+              aria-label={link.label}
+              className="inline-flex size-9 items-center justify-center border border-stone-950 text-stone-950 transition-colors hover:bg-stone-200 dark:border-[#333333] dark:text-white dark:hover:bg-[#242424] 2xl:size-10"
+              href={link.href}
+              key={link.label}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FooterBrandIcon label={link.label} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom meta */}
+      <div className="px-5 py-4 sm:px-8 md:px-12 2xl:px-24 2xl:py-5">
+        <p className="font-serif text-xs italic text-stone-500 dark:text-[#666666] 2xl:text-sm">
+          Last updated June 2026
+        </p>
       </div>
     </footer>
   );

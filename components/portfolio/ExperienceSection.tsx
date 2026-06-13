@@ -28,8 +28,8 @@ function escapeRegExp(value: string) {
 
 export function ExperienceSection() {
   return (
-    <section className="mb-12 scroll-mt-24 2xl:mb-16" id="experience">
-      <SectionHeading>Experience</SectionHeading>
+    <section className="mb-12 scroll-mt-24 2xl:mb-16" id="work">
+      <SectionHeading>Work</SectionHeading>
 
       <div className="space-y-10 2xl:space-y-14">
         {experiences.map((experience) => (
