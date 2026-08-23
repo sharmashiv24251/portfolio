@@ -20,6 +20,7 @@ import onboardingScreen from "./assets/onboarding.png";
 import toyCollectionScreen from "./assets/toy_collection.png";
 import toyExchangeScreen from "./assets/toy_exchange.png";
 import toyScanScreen from "./assets/toy_scan.png";
+import toySelectScreen from "./assets/toy_select.png";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -79,10 +80,10 @@ const flow = [
   },
   {
     kicker: "05",
-    title: "Swap, then meet up.",
+    title: "Meet up, then swap.",
     text: "The exchange flow turns matched toys into a bright, physical-feeling handoff story. Supabase powers the app data behind the scenes while the UI keeps the trade feeling silly and safe.",
-    image: toyExchangeScreen,
-    alt: "Give-Give toy exchange result screen",
+    image: toySelectScreen,
+    alt: "Give-Give toy selection screen with swipeable match cards",
     color: "lavender",
   },
 ] satisfies Array<{
@@ -168,9 +169,20 @@ const pixelIcons: Record<(typeof toyActions)[number]["icon"], React.ReactNode> =
   ),
 };
 
+const pixelIconScale: Record<(typeof toyActions)[number]["icon"], number> = {
+  cookie: 2,
+  box: 1,
+  swap: 1.3,
+  compass: 1.15,
+};
+
 function PixelIcon({ name }: { name: (typeof toyActions)[number]["icon"] }) {
   return (
-    <span className={styles.pixelIcon} aria-hidden="true">
+    <span
+      aria-hidden="true"
+      className={styles.pixelIcon}
+      style={{ "--icon-scale": pixelIconScale[name] } as CSSProperties}
+    >
       {pixelIcons[name]}
     </span>
   );

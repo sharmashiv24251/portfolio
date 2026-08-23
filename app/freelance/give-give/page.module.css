@@ -470,8 +470,8 @@
 }
 
 .pixelIcon svg {
-  width: 55%;
-  height: 55%;
+  width: calc(55% * var(--icon-scale, 1));
+  height: calc(55% * var(--icon-scale, 1));
 }
 
 .confetti {
