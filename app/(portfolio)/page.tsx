@@ -3,6 +3,7 @@ import { ContributionsSection } from "@/components/portfolio/ContributionsSectio
 import { EducationSection } from "@/components/portfolio/EducationSection";
 import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { FeaturedWorkSection } from "@/components/portfolio/FeaturedWorkSection";
+import { FreelanceSection } from "@/components/portfolio/FreelanceSection";
 import { Hero } from "@/components/portfolio/Hero";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { SkillsSection } from "@/components/portfolio/SkillsSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <FeaturedWorkSection />
       <ExperienceSection />
       <ProjectsSection />
+      <FreelanceSection />
       <SkillsSection />
       <AboutSection />
       <EducationSection />

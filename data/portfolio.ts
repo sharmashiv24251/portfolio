@@ -1,6 +1,7 @@
 export const navItems = [
   { label: "Work", href: "#work" },
   { label: "Projects", href: "#projects" },
+  { label: "Freelance", href: "#freelance" },
   { label: "Stack", href: "#stack" },
   { label: "About", href: "#about" },
 ] as const;
@@ -8,6 +9,7 @@ export const navItems = [
 export const sideNavItems = [
   { label: "Work", href: "/#work", sectionId: "work", icon: "briefcase" },
   { label: "Projects", href: "/#projects", sectionId: "projects", icon: "projects" },
+  { label: "Freelance", href: "/#freelance", sectionId: "freelance", icon: "rocket" },
   { label: "Stack", href: "/#stack", sectionId: "stack", icon: "code" },
   { label: "About", href: "/#about", sectionId: "about", icon: "user" },
   { label: "Blog", href: "/blogs", icon: "archive" },
@@ -344,6 +346,35 @@ export const projects = [
     },
   },
 ];
+
+export const freelanceWork = [
+  {
+    slug: "give-give",
+    title: "Give-Give — Toy Exchange App",
+    company: "Freelance client",
+    role: "Full-Stack Mobile Engineer · Sole Developer",
+    description:
+      "A playful toy-exchange app for families: scan a toy with the camera, sort it into a collection, and swap it toward a real-world meetup. Built end to end from a client-provided Figma file, character and all.",
+    href: "/freelance/give-give",
+    mediaBackground: "#baaed2",
+    images: [
+      {
+        src: "/freelance/give-give-home.png",
+        alt: "Give-Give home screen with four chunky action buttons — eat toys, check it, swap it, meet up",
+      },
+      {
+        src: "/freelance/give-give-collection.png",
+        alt: "Give-Give toy collection screen with category chips and item rows",
+      },
+    ],
+    tags: ["React Native", "Expo", "TypeScript", "iOS VisionKit", "Supabase", "Figma to app"],
+    contributions: [
+      "Built the entire React Native (Expo + TypeScript) app end to end from a provided Figma file — onboarding, camera scan, toy collection, and exchange flow.",
+      "Integrated iOS VisionKit to recognize toys from real photos, turning scanning into a playful moment instead of a cold utility screen.",
+      "Kept every screen's chunky, character-driven personality faithful to the Figma while wiring it to Supabase for real app data underneath.",
+    ],
+  },
+] as const;
 
 export const stack = {
   core: [

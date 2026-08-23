@@ -5,6 +5,7 @@ import { projects } from "@/data/portfolio";
 import { SectionHeading } from "@/components/portfolio/SectionHeading";
 import { CaseStudyLayout, type CaseStudySection } from "@/components/portfolio/CaseStudyLayout";
 import { Icon } from "@/components/portfolio/Icon";
+import { assetPath } from "@/lib/site";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -127,7 +128,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             fill
             priority
             sizes="(min-width: 768px) 80vw, 100vw"
-            src={project.image}
+            src={assetPath(project.image)}
           />
         )}
       </div>

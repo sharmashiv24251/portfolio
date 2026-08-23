@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { featuredWork } from "@/data/portfolio";
+import { assetPath } from "@/lib/site";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
 
@@ -26,7 +27,7 @@ export function FeaturedWorkSection() {
               className="object-cover"
               fill
               sizes="(min-width: 768px) 320px, 100vw"
-              src={featuredWork.image}
+              src={assetPath(featuredWork.image)}
             />
             <video
               autoPlay

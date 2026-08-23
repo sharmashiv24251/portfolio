@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/data/portfolio";
+import { assetPath } from "@/lib/site";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
 
@@ -32,7 +33,7 @@ function ProjectCard({ project }: { project: Project }) {
           className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
           fill
           sizes="(min-width: 768px) 360px, 100vw"
-          src={project.image}
+          src={assetPath(project.image)}
         />
       </div>
 

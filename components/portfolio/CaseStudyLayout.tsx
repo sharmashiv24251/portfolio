@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { assetPath } from "@/lib/site";
 import { Icon } from "./Icon";
 import { SectionHeading } from "./SectionHeading";
 
@@ -116,7 +117,7 @@ export function CaseStudyLayout({
               fill
               priority
               sizes="(min-width: 1280px) 420px, 100vw"
-              src={image}
+              src={assetPath(image)}
             />
           ) : (
             <div className="flex h-full items-center justify-center text-sm text-stone-400 dark:text-[#555555]">
@@ -263,7 +264,7 @@ export function CaseStudyLayout({
                   className="object-cover"
                   fill
                   sizes="(min-width: 640px) 50vw, 100vw"
-                  src={item.src}
+                  src={assetPath(item.src)}
                 />
               </div>
             ))}
