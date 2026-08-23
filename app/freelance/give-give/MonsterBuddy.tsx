@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Volume2, VolumeX } from "lucide-react";
 import type { CSSProperties, MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import ggMascot from "./assets/gg.png";
@@ -151,8 +152,14 @@ export function MonsterBuddy() {
               {line}
             </span>
           ))}
-          <button className={styles.soundToggle} onClick={toggleSound} type="button">
-            {soundEnabled ? "mute sounds" : "play sounds"}
+          <button
+            aria-label={soundEnabled ? "Mute sounds" : "Play sounds"}
+            aria-pressed={soundEnabled}
+            className={styles.soundToggle}
+            onClick={toggleSound}
+            type="button"
+          >
+            {soundEnabled ? <Volume2 aria-hidden="true" /> : <VolumeX aria-hidden="true" />}
           </button>
         </span>
       )}

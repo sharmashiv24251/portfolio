@@ -192,7 +192,8 @@
   right: 0.35rem;
   bottom: calc(100% + 0.3rem);
   display: inline-flex;
-  min-height: 2rem;
+  width: 2rem;
+  aspect-ratio: 1;
   align-items: center;
   justify-content: center;
   border: 3px solid var(--gg-line);
@@ -200,14 +201,14 @@
   background: var(--gg-lime);
   color: var(--gg-ink);
   cursor: pointer;
-  font-size: 0.68rem;
-  font-weight: 950;
-  letter-spacing: 0.06em;
   opacity: 0;
-  text-transform: uppercase;
   transition: opacity 240ms var(--gg-ease), transform 240ms var(--gg-ease);
   transform: translateY(0.3rem);
-  white-space: nowrap;
+}
+
+.soundToggle svg {
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 .monsterBuddy:hover .monsterSpeech,
@@ -661,6 +662,7 @@
 .flowCopy {
   position: relative;
   z-index: 2;
+  align-self: start;
   max-width: 45rem;
 }
 
@@ -992,8 +994,7 @@
 
   .soundToggle {
     right: 0.2rem;
-    min-height: 1.8rem;
-    font-size: 0.62rem;
+    width: 1.8rem;
   }
 
   .topBar {
