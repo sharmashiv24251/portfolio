@@ -21,12 +21,12 @@ export function FeaturedWorkSection() {
       <div className="border border-stone-950 bg-white dark:border-[#333333] dark:bg-[#242424]">
         <div className="flex flex-col gap-0 md:flex-row">
           {/* Media */}
-          <div className="relative aspect-square shrink-0 overflow-hidden bg-stone-100 dark:bg-[#333333] md:w-72 lg:w-80 2xl:w-96">
+          <div className="relative aspect-[6/5] shrink-0 overflow-hidden bg-stone-100 dark:bg-[#333333] md:w-80 lg:w-[22rem] 2xl:w-[27rem]">
             <Image
               alt={featuredWork.imageAlt}
               className="object-cover"
               fill
-              sizes="(min-width: 768px) 320px, 100vw"
+              sizes="(min-width: 768px) 360px, 100vw"
               src={assetPath(featuredWork.image)}
             />
             <video
@@ -40,7 +40,7 @@ export function FeaturedWorkSection() {
           </div>
 
           {/* Content */}
-          <div className="flex flex-1 flex-col justify-between p-6 sm:p-8 2xl:p-10">
+          <div className="flex flex-1 flex-col justify-between p-6 sm:p-7 2xl:p-9">
             <div>
               {/* Company / role badge */}
               <div className="mb-4 flex flex-wrap items-center gap-3 2xl:mb-5">

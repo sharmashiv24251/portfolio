@@ -30,7 +30,7 @@ export function FreelanceSection() {
               className="relative aspect-square shrink-0 overflow-hidden md:w-72 lg:w-80 2xl:w-96"
               style={{ background: item.mediaBackground }}
             >
-              <div className="absolute left-[38%] top-1/2 h-[80%] -translate-x-1/2 -translate-y-1/2 -rotate-6 aspect-[1419/2796] drop-shadow-xl transition-transform duration-500 group-hover:-translate-x-[54%] group-hover:rotate-[-9deg]">
+              <div className="absolute left-[38%] top-1/2 h-[80%] -translate-x-1/2 -translate-y-1/2 -rotate-6 aspect-[1419/2796] drop-shadow-xl transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-x-[54%] group-hover:rotate-[-9deg]">
                 <Image
                   alt={item.images[0].alt}
                   className="object-contain"
@@ -39,7 +39,7 @@ export function FreelanceSection() {
                   src={assetPath(item.images[0].src)}
                 />
               </div>
-              <div className="absolute left-[64%] top-[54%] h-[80%] -translate-x-1/2 -translate-y-1/2 rotate-6 aspect-[1419/2796] drop-shadow-2xl transition-transform duration-500 group-hover:translate-x-[-46%] group-hover:rotate-[9deg]">
+              <div className="absolute left-[64%] top-[54%] h-[80%] -translate-x-1/2 -translate-y-1/2 rotate-6 aspect-[1419/2796] drop-shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[-46%] group-hover:rotate-[9deg]">
                 <Image
                   alt={item.images[1].alt}
                   className="object-contain"
