@@ -1,9 +1,11 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "portfolio",
       "dependencies": {
+        "lucide-react": "^1.12.0",
         "next": "16.2.4",
         "react": "19.2.4",
         "react-dom": "19.2.4",
@@ -17,6 +19,16 @@
         "eslint-config-next": "16.2.4",
         "tailwindcss": "^4",
         "typescript": "^5",
+      },
+      "optionalDependencies": {
+        "@next/swc-linux-x64-gnu": "16.2.4",
+        "@next/swc-linux-x64-musl": "16.2.4",
+        "@tailwindcss/oxide-linux-x64-gnu": "4.2.4",
+        "@tailwindcss/oxide-linux-x64-musl": "4.2.4",
+        "@unrs/resolver-binding-linux-x64-gnu": "1.11.1",
+        "@unrs/resolver-binding-linux-x64-musl": "1.11.1",
+        "lightningcss-linux-x64-gnu": "1.32.0",
+        "lightningcss-linux-x64-musl": "1.32.0",
       },
     },
   },
@@ -636,6 +648,8 @@
     "loose-envify": ["loose-envify@1.4.0", "", { "dependencies": { "js-tokens": "^3.0.0 || ^4.0.0" }, "bin": { "loose-envify": "cli.js" } }, "sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q=="],
 
     "lru-cache": ["lru-cache@5.1.1", "", { "dependencies": { "yallist": "^3.0.2" } }, "sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w=="],
+
+    "lucide-react": ["lucide-react@1.33.0", "", { "peerDependencies": { "react": "^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-MTRwMy0ZlL8Ur/vOAiJ9XGHE+kFPC7brq6MxAm0GiGXEBj0qy0jA/pG4N675oSzciO/UCdX8T+5yUQdmDeTLxg=="],
 
     "magic-string": ["magic-string@0.30.21", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.5.5" } }, "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ=="],
 

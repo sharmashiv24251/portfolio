@@ -16,6 +16,7 @@ type CaseStudyData = {
   shortDescription: string;
   valueProposition: string;
   role: string;
+  gallery?: { src: string; alt: string }[];
   sections: CaseStudySection[];
 };
 
@@ -44,6 +45,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     return (
       <CaseStudyLayout
         figmaHref={figmaHref}
+        gallery={caseStudy.gallery}
         githubHref={githubHref}
         image={project.image}
         imageAlt={project.imageAlt}

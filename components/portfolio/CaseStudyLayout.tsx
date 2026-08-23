@@ -18,6 +18,7 @@ export type CaseStudyProps = {
   image?: string;
   imageAlt?: string;
   video?: string;
+  gallery?: { src: string; alt: string }[];
   liveHref?: string;
   playStoreHref?: string;
   githubHref?: string;
@@ -69,6 +70,7 @@ export function CaseStudyLayout({
   image,
   imageAlt,
   video,
+  gallery,
   liveHref,
   playStoreHref,
   githubHref,
@@ -242,6 +244,29 @@ export function CaseStudyLayout({
                 <Icon className="ml-2 size-3 shrink-0 text-stone-300 group-hover:text-stone-500 dark:text-[#444444] dark:group-hover:text-[#a0a0a0]" name="external" />
               </a>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* ── Gallery ── */}
+      {gallery && gallery.length > 0 && (
+        <div className="mb-14 2xl:mb-20">
+          <SectionHeading>Product</SectionHeading>
+          <div className="grid gap-4 sm:grid-cols-2 2xl:gap-6">
+            {gallery.map((item) => (
+              <div
+                className="relative aspect-video overflow-hidden border border-stone-950 bg-stone-100 dark:border-[#333333] dark:bg-[#242424]"
+                key={item.src}
+              >
+                <Image
+                  alt={item.alt}
+                  className="object-cover"
+                  fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  src={item.src}
+                />
+              </div>
+            ))}
           </div>
         </div>
       )}
