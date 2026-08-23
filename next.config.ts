@@ -1,10 +1,14 @@
 import type { NextConfig } from "next";
 
 const isGHPages = process.env.GITHUB_PAGES === "true";
+const basePath = isGHPages ? "/portfolio" : "";
 
 const nextConfig: NextConfig = {
   ...(isGHPages && { output: "export" }),
-  basePath: isGHPages ? "/portfolio" : "",
+  basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   async headers() {
     return [
       {

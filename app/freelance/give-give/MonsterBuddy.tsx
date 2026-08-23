@@ -14,8 +14,9 @@ const monsterLines = [
   "swap ideas?",
 ] as const;
 
-const soundUrl = "/freelance/give-give/sound/give-give-theme";
-const clickUrl = "/freelance/give-give/sound/click";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const soundUrl = `${basePath}/freelance/give-give/give-give-theme.mp3`;
+const clickUrl = `${basePath}/freelance/give-give/click.mp3`;
 
 export function MonsterBuddy() {
   const themeAudioRef = useRef<HTMLAudioElement | null>(null);
