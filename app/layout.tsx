@@ -3,6 +3,7 @@ import { Inter, Noto_Serif } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { canonicalUrl } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -118,7 +119,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        {children}
+        <Analytics />
+      </body>
       <Script id="theme-init" strategy="beforeInteractive">{`
         try {
           const storedTheme = localStorage.getItem("portfolio-color-theme");
